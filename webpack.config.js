@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+let path = require('path');
+let webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -13,8 +13,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: "parallax-scroll.umd.js",
-    library: ["parallax-scroll"],
+    filename: "ng-virtual-keyboard.umd.js",
+    library: ["ng-virtual-keyboard"],
     libraryTarget: "umd"
   },
   externals: [

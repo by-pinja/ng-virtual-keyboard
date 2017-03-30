@@ -7,8 +7,63 @@ import { KeyPressInterface } from './key-press.interface';
 
 @Component({
   selector: 'virtual-keyboard',
-  templateUrl: './virtual-keyboard.component.html',
-  styleUrls: ['./virtual-keyboard.component.scss']
+  template: `
+    <div class="container">
+      <div fxLayout="column">
+        <md-input-container>
+          <button class="close" color="primary" md-mini-fab
+            (click)="close()"
+          >
+            <md-icon>check</md-icon>
+          </button>
+    
+          <input type="text"
+            mdInput
+            #keyboardInput
+            (click)="updateCaretPosition()"
+            [(ngModel)]="inputElement.nativeElement.value" placeholder="{{ placeholder }}"
+            [maxLength]="getMaxLength()"
+          />
+        </md-input-container>
+    
+        <div fxLayout="row" fxLayoutAlign="center center"
+          *ngFor="let row of layout; let rowIndex = index"
+          [attr.data-index]="rowIndex"
+        >
+          <virtual-keyboard-key
+            *ngFor="let key of row; let keyIndex = index"
+            [key]="key"
+            [disabled]="disabled"
+            [attr.data-index]="keyIndex"
+            (keyPress)="keyPress($event)"
+          ></virtual-keyboard-key>
+        </div>
+      </div>
+    </div>
+  `,
+  styles: [`
+    .close {
+      position: relative;
+      float: right;
+      top: -16px;
+      right: 0;
+      margin-bottom: -40px;
+    }
+  
+    .mat-input-container {
+      margin: -16px 0;
+      font-size: 32px;
+    }
+  
+    .mat-input-element:disabled {
+      color: currentColor;
+    }
+
+    :host /deep/ .mat-input-placeholder {
+      top: 10px !important;
+      font-size: 24px !important;
+    }
+  `]
 })
 
 export class VirtualKeyboardComponent implements OnInit, OnDestroy {

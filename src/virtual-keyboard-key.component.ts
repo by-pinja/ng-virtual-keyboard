@@ -4,8 +4,42 @@ import { KeyPressInterface } from './key-press.interface';
 
 @Component({
   selector: 'virtual-keyboard-key',
-  templateUrl: './virtual-keyboard-key.component.html',
-  styleUrls: ['./virtual-keyboard-key.component.scss']
+  template: `
+    <button
+      md-raised-button
+      color="primary"
+      fxFlex="{{ flexValue }}"
+      [class.spacer]="spacer"
+      [disabled]="isDisabled()"
+      (click)="onKeyPress()"
+    >
+      <span *ngIf="!special">{{ keyValue }}</span>
+    
+      <span *ngIf="special">
+        <md-icon *ngIf="icon">{{ icon }}</md-icon>
+    
+        {{ text }}
+      </span>
+    </button>
+  `,
+  styles: [`
+    .mat-button,
+    .mat-icon-button,
+    .mat-raised-button {
+      min-width: 64px;
+      min-height: 64px;
+      padding: 0;
+      margin: 2px;
+      font-size: 32px;
+      line-height: 32px;
+    }
+    
+    .mat-button.spacer,
+    .mat-icon-button.spacer,
+    .mat-raised-button.spacer {
+      background-color: transparent;
+    }
+  `]
 })
 
 export class VirtualKeyboardKeyComponent implements OnInit {

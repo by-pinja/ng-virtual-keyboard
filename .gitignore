@@ -106,7 +106,6 @@ $RECYCLE.BIN/
 *.lnk
 ### NetBeans template
 nbproject/private/
-build/
 nbbuild/
 nbdist/
 .nb-gradle/

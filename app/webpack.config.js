@@ -29,12 +29,7 @@ const config = {
       },
     ]
   },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: 'build/style.css',
-      allChunks: true
-    }),
-  ],
+  plugins: [],
   ts: {
     include: ['src/**/*.ts', 'app/**/*.ts']
   },
@@ -48,10 +43,6 @@ const config = {
 if (process.env.NODE_ENV === 'prod') {
   config.plugins = [
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
-    new ExtractTextPlugin({
-      filename: 'build/style.css',
-      allChunks: true
-    }),
   ];
 
   config.module.loaders.push({
