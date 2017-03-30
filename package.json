@@ -1,0 +1,66 @@
+{
+  "name": "ng-virtual-keyboard",
+  "version": "0.0.0",
+  "description": "Virtual Keyboard for Angular applications",
+  "main": "dist/parallax-scroll.umd.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "start": "NODE_ENV=dev webpack-dev-server --quiet --port 9001 --host 0.0.0.0 --content-base app --config app/webpack.config --open",
+    "lint": "tslint 'src/**/*.ts' 'app/**/*.ts'",
+    "clean": "rimraf dist",
+    "build": "npm-run-all --serial clean build:ngc build:umd build:app",
+    "build:ngc": "ngc -p tsconfig.ngc.json",
+    "build:umd": "NODE_ENV=prod webpack",
+    "build:app": "NODE_ENV=prod webpack --config app/webpack.config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProtaconSolutions/ng-virtual-keyboard.git"
+  },
+  "keywords": [
+    "Angular"
+  ],
+  "author": "Protacon Solutions",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ProtaconSolutions/ng-virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/ProtaconSolutions/ng-virtual-keyboard#readme",
+  "dependencies": {
+    "@angular/flex-layout": "^2.0.0-rc.1",
+    "@angular/material": "^2.0.0-beta.2"
+  },
+  "devDependencies": {
+    "@angular/common": "^2.3.0|4.0.0",
+    "@angular/compiler": "^2.3.0",
+    "@angular/compiler-cli": "^2.3.0",
+    "@angular/core": "^2.3.0",
+    "@angular/forms": "^2.3.0",
+    "@angular/http": "^2.3.0",
+    "@angular/platform-browser": "^2.3.0",
+    "@angular/platform-browser-dynamic": "^2.3.0",
+    "@angular/router": "^3.3.0",
+    "@types/node": "^6.0.31",
+    "angular2-template-loader": "^0.6.0",
+    "codelyzer": "^2.0.1",
+    "core-js": "^2.4.1",
+    "css-loader": "^0.28.0",
+    "extract-text-webpack-plugin": "^1.0.0",
+    "node-sass": "^4.5.2",
+    "npm-check-updates": "^2.8.8",
+    "npm-run-all": "^3.1.2",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.4",
+    "rxjs": "^5.0.0-rc.5",
+    "sass-loader": "^6.0.3",
+    "strip-loader": "^0.1.2",
+    "style-loader": "^0.16.1",
+    "ts-loader": "^1.3.2",
+    "tslint": "^4.0.2",
+    "typescript": "^2.0.3",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2",
+    "zone.js": "^0.7.2"
+  }
+}

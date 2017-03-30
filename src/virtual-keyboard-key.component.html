@@ -1,0 +1,16 @@
+<button
+  md-raised-button
+  color="primary"
+  fxFlex="{{ flexValue }}"
+  [class.spacer]="spacer"
+  [disabled]="isDisabled()"
+  (click)="onKeyPress()"
+>
+    <span *ngIf="!special">{{ keyValue }}</span>
+
+    <span *ngIf="special">
+        <md-icon *ngIf="icon">{{ icon }}</md-icon>
+
+        {{ text }}
+    </span>
+</button>

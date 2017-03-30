@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Virtual Keyboard for Angular applications</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    </head>
+
+    <body>
+        <my-app fxFlex>Loading...</my-app>
+
+        <script>
+            document.write('<base href="' + document.location + '" />');
+
+            var script = document.createElement('script');
+            script.src = location.pathname.replace('index.html', '') + 'build/app.js';
+            (document.body).appendChild(script);
+        </script>
+    </body>
+</html>
