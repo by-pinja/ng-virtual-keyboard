@@ -1,67 +1,75 @@
 <div class="container">
-    <div fxLayout="row" fxFlex fxFlexFill>
-        <div fxLayout="column" fxFlex="300px">
-            <h1>Layouts</h1>
-
-            <h2>Alpha numeric</h2>
-
-            <md-input-container>
-                <input value=""
-                       mdInput
-                       ng-virtual-keyboard
-                       ng-virtual-keyboard-layout="alphaNumeric"
-                />
-            </md-input-container>
-
-            <h2>Alpha numeric - nordic</h2>
-
-            <md-input-container>
-                <input value=""
-                       mdInput
-                       ng-virtual-keyboard
-                       ng-virtual-keyboard-layout="alphaNumericNordic"
-                />
-            </md-input-container>
-
-            <h2>Extended</h2>
-
-            <md-input-container>
-                <input value=""
-                   mdInput
-                   ng-virtual-keyboard
-                   ng-virtual-keyboard-layout="extended"
-                />
-            </md-input-container>
-
-            <h2>Extended - Nordic</h2>
-
-            <md-input-container>
-                <input value=""
-                    mdInput
-                    ng-virtual-keyboard
-                    ng-virtual-keyboard-layout="extendedNordic"
-                />
-            </md-input-container>
-
-            <h2>Numeric</h2>
-
-            <md-input-container>
-                <input value=""
-                       mdInput
-                       ng-virtual-keyboard
-                       ng-virtual-keyboard-layout="numeric"
-                />
-            </md-input-container>
-
-            <h2>Phone</h2>
-
-            <md-input-container>
-                <input value=""
-                       mdInput
-                       ng-virtual-keyboard
-                       ng-virtual-keyboard-layout="phone"
-                />
-            </md-input-container>
-        </div>
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
+    <div fxFlex="180px">
+      <h1><sup>Layout</sup>/<sub>Info</sub></h1>
     </div>
+
+    <strong class="content" fxFlex="200px">
+      Minimal
+    </strong>
+
+    <strong class="content" fxFlex="200px">
+      With placeholder
+    </strong>
+
+    <strong class="content" fxFlex="200px">
+      With custom placeholder
+    </strong>
+
+    <strong class="content" fxFlex="200px">
+      With maxlength="5"
+    </strong>
+
+    <div fxFlex></div>
+  </div>
+
+  <div fxLayout="row" fxFlex *ngFor="let layout of layouts">
+    <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
+      <strong style="text-align: right;" fxFlex="180px">{{ layout.name }}</strong>
+
+      <div class="content" fxLayout="column" fxFlex="200px">
+        <md-input-container>
+          <input value=""
+            mdInput
+            ng-virtual-keyboard
+            [ng-virtual-keyboard-layout]="layout.layout"
+          />
+        </md-input-container>
+      </div>
+
+      <div class="content" fxLayout="column" fxFlex="200px">
+        <md-input-container>
+          <input value="" placeholder="{{ layout.placeholder }}"
+            mdInput
+            ng-virtual-keyboard
+            [ng-virtual-keyboard-layout]="layout.layout"
+          />
+        </md-input-container>
+      </div>
+
+      <div class="content" fxLayout="column" fxFlex="200px">
+        <md-input-container>
+          <input value="" placeholder="{{ layout.placeholder }}"
+            mdInput
+            ng-virtual-keyboard
+            [ng-virtual-keyboard-layout]="layout.layout"
+            [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
+          />
+        </md-input-container>
+      </div>
+
+      <div class="content" fxLayout="column" fxFlex="200px">
+        <md-input-container>
+          <input value="" placeholder="{{ layout.placeholder }}" maxlength="5"
+            mdInput
+            ng-virtual-keyboard
+            [ng-virtual-keyboard-layout]="layout.layout"
+            [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
+          />
+        </md-input-container>
+      </div>
+
+      <div fxFlex></div>
+    </div>
+  </div>
 </div>
