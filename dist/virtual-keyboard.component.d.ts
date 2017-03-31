@@ -11,6 +11,7 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
     layout: KeyboardLayout;
     placeholder: string;
     disabled: boolean;
+    maxLength: number | string;
     private caretPosition;
     private shift;
     /**
@@ -44,7 +45,6 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
      *  - CapsLock
      */
     ngOnDestroy(): void;
-    getMaxLength(): any;
     /**
      * Method to close virtual keyboard dialog
      */
@@ -64,6 +64,10 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
      * @param {KeyPressInterface} event
      */
     keyPress(event: KeyPressInterface): void;
+    /**
+     * Method to check is virtual keyboard input is disabled.
+     */
+    private checkDisabled();
     /**
      * Method to handle "normal" key press event, this will add specified character to input value.
      *

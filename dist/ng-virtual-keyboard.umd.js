@@ -257,6 +257,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.inputElement.nativeElement.value.length) {
 	            this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
 	        }
+	        this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
+	        this.checkDisabled();
 	    };
 	    /**
 	     * On destroy life cycle hook, in this we want to reset virtual keyboard service states on following:
@@ -265,9 +267,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	    VirtualKeyboardComponent.prototype.ngOnDestroy = function () {
 	        this.virtualKeyboardService.reset();
-	    };
-	    VirtualKeyboardComponent.prototype.getMaxLength = function () {
-	        return this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
 	    };
 	    /**
 	     * Method to close virtual keyboard dialog
@@ -303,6 +302,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this.virtualKeyboardService.toggleShift();
 	            }
 	        }
+	        this.checkDisabled();
+	    };
+	    /**
+	     * Method to check is virtual keyboard input is disabled.
+	     */
+	    VirtualKeyboardComponent.prototype.checkDisabled = function () {
 	        var maxLength = this.inputElement.nativeElement.maxLength;
 	        var valueLength = this.inputElement.nativeElement.value.length;
 	        this.disabled = maxLength > 0 && valueLength >= maxLength;
@@ -410,7 +415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	VirtualKeyboardComponent = VirtualKeyboardComponent_1 = __decorate([
 	    core_1.Component({
 	        selector: 'virtual-keyboard',
-	        template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <md-input-container>\n          <button class=\"close\" color=\"primary\" md-mini-fab\n            (click)=\"close()\"\n          >\n            <md-icon>check</md-icon>\n          </button>\n    \n          <input type=\"text\"\n            mdInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"getMaxLength()\"\n          />\n        </md-input-container>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
+	        template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <md-input-container>\n          <button class=\"close\" color=\"primary\" md-mini-fab\n            (click)=\"close()\"\n          >\n            <md-icon>check</md-icon>\n          </button>\n    \n          <input type=\"text\"\n            mdInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\"\n          />\n        </md-input-container>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
 	        styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
 	    }),
 	    __metadata("design:paramtypes", [material_1.MdDialogRef,
