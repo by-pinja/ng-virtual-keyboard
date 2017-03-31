@@ -22,7 +22,7 @@ import { KeyPressInterface } from './key-press.interface';
             #keyboardInput
             (click)="updateCaretPosition()"
             [(ngModel)]="inputElement.nativeElement.value" placeholder="{{ placeholder }}"
-            [maxLength]="getMaxLength()"
+            [maxLength]="maxLength"
           />
         </md-input-container>
     
@@ -73,6 +73,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   public layout: KeyboardLayout;
   public placeholder: string;
   public disabled: boolean;
+  public maxLength: number|string;
 
   private caretPosition: number;
   private shift = false;
@@ -147,6 +148,10 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     if (this.inputElement.nativeElement.value.length) {
       this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
     }
+
+    this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
+
+    this.checkDisabled();
   }
 
   /**
@@ -156,10 +161,6 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
    */
   public ngOnDestroy(): void {
     this.virtualKeyboardService.reset();
-  }
-
-  public getMaxLength() {
-    return this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
   }
 
   /**
@@ -200,6 +201,13 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
       }
     }
 
+    this.checkDisabled();
+  }
+
+  /**
+   * Method to check is virtual keyboard input is disabled.
+   */
+  private checkDisabled(): void {
     const maxLength = this.inputElement.nativeElement.maxLength;
     const valueLength = this.inputElement.nativeElement.value.length;
 
