@@ -13,4 +13,4 @@ Virtual Keyboard for Angular applications
 ## License
 [The MIT License (MIT)](LICENSE)
 
-Copyright (c) 2017 Protacon Solutions
+Copyright (c) 2017 Protacon

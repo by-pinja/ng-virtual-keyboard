@@ -1,5 +1,5 @@
 {
-  "name": "ng-virtual-keyboard",
+  "name": "protacon/ng-virtual-keyboard",
   "version": "0.0.0",
   "description": "Virtual Keyboard for Angular applications",
   "main": "dist/ng-virtual-keyboard.umd.js",
@@ -16,17 +16,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProtaconSolutions/ng-virtual-keyboard.git"
+    "url": "git+https://github.com/protacon/ng-virtual-keyboard.git"
   },
   "keywords": [
     "Angular"
   ],
-  "author": "Protacon Solutions",
+  "author": "Protacon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ProtaconSolutions/ng-virtual-keyboard/issues"
+    "url": "https://github.com/protacon/ng-virtual-keyboard/issues"
   },
-  "homepage": "https://github.com/ProtaconSolutions/ng-virtual-keyboard#readme",
+  "homepage": "https://github.com/protacon/ng-virtual-keyboard#readme",
   "dependencies": {
     "@angular/flex-layout": "^2.0.0-rc.1",
     "@angular/material": "^2.0.0-beta.2"
