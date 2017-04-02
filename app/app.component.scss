@@ -26,14 +26,19 @@ html, body {
   margin: 0;
   height: 100%;
   min-height: 100%;
-  padding: 1em;
+  padding: .5em 1em;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  flex: 1;
 }
 
-h1, h2 {
+h1, h2, h3, h4 {
   margin: 0;
 }
 
 .content {
   margin: 0 1em;
+}
+
+.text-right {
+  text-align: right;
 }

@@ -1,75 +1,127 @@
-<div class="container">
-  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
-    <div fxFlex="180px">
-      <h1><sup>Layout</sup>/<sub>Info</sub></h1>
+<div fxLayout="row" fxLayoutAlign="space-around start" fxFlex fxFill>
+  <div class="container">
+    <div fxLayout="column">
+      <h1>@protacon/ng-virtual-keyboard</h1>
+
+      <p>
+        Virtual Keyboard for Angular applications.
+      </p>
     </div>
 
-    <strong class="content" fxFlex="200px">
-      Minimal
-    </strong>
+    <div fxLayout="column">
+      <h2>Install</h2>
 
-    <strong class="content" fxFlex="200px">
-      With placeholder
-    </strong>
+      <h4>Step 1: Install @protacon/ng-virtual-keyboard</h4>
 
-    <strong class="content" fxFlex="200px">
-      With custom placeholder
-    </strong>
+      <pre>
+<code>$ npm install --save @protacon/ng-virtual-keyboard</code>
+      </pre>
 
-    <strong class="content" fxFlex="200px">
-      With maxlength="5"
-    </strong>
+      <h4>Step 2: Import the module</h4>
 
-    <div fxFlex></div>
-  </div>
+      <p>
+        Add `NgVirtualKeyboardModule` as an import in your app's root NgModule.
+      </p>
 
-  <div fxLayout="row" fxFlex *ngFor="let layout of layouts">
+      <pre>
+<code>import {{ '{' }} NgVirtualKeyboardModule {{ '}' }}  from '@protacon/ng-virtual-keyboard';
+
+@NgModule({{ '{' }}
+  ...
+  imports: [
+  ...
+  NgVirtualKeyboardModule,
+  ],
+  ...
+{{ '}' }})
+export class AppModule {{ '{' }} {{ '}' }}</code>
+      </pre>
+    </div>
+
+    <h2>Demos</h2>
+
     <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
-      <strong style="text-align: right;" fxFlex="180px">{{ layout.name }}</strong>
-
-      <div class="content" fxLayout="column" fxFlex="200px">
-        <md-input-container>
-          <input value=""
-            mdInput
-            ng-virtual-keyboard
-            [ng-virtual-keyboard-layout]="layout.layout"
-          />
-        </md-input-container>
+      <div fxFlex="180px">
+        <h3 class="text-right">
+          <sup>Layout</sup>/<sub>Info</sub>
+        </h3>
       </div>
 
-      <div class="content" fxLayout="column" fxFlex="200px">
-        <md-input-container>
-          <input value="" placeholder="{{ layout.placeholder }}"
-            mdInput
-            ng-virtual-keyboard
-            [ng-virtual-keyboard-layout]="layout.layout"
-          />
-        </md-input-container>
-      </div>
+      <strong class="content" fxFlex>
+        Minimal
+      </strong>
 
-      <div class="content" fxLayout="column" fxFlex="200px">
-        <md-input-container>
-          <input value="" placeholder="{{ layout.placeholder }}"
-            mdInput
-            ng-virtual-keyboard
-            [ng-virtual-keyboard-layout]="layout.layout"
-            [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
-          />
-        </md-input-container>
-      </div>
+      <strong class="content" fxFlex>
+        With placeholder
+      </strong>
 
-      <div class="content" fxLayout="column" fxFlex="200px">
-        <md-input-container>
-          <input value="" placeholder="{{ layout.placeholder }}" maxlength="5"
-            mdInput
-            ng-virtual-keyboard
-            [ng-virtual-keyboard-layout]="layout.layout"
-            [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
-          />
-        </md-input-container>
-      </div>
+      <strong class="content" fxFlex>
+        With custom placeholder
+      </strong>
 
-      <div fxFlex></div>
+      <strong class="content" fxFlex>
+        With maxlength="5"
+      </strong>
+    </div>
+
+    <div fxLayout="row" fxFlex *ngFor="let layout of layouts">
+      <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
+        <strong class="text-right" fxFlex="180px">{{ layout.name }}</strong>
+
+        <div class="content"
+          fxLayout="column"
+          fxFlex
+        >
+          <md-input-container>
+            <input value=""
+              mdInput
+              ng-virtual-keyboard
+              [ng-virtual-keyboard-layout]="layout.layout"
+            />
+          </md-input-container>
+        </div>
+
+        <div class="content"
+          fxLayout="column"
+          fxFlex
+        >
+          <md-input-container>
+            <input value="" placeholder="{{ layout.placeholder }}"
+              mdInput
+              ng-virtual-keyboard
+              [ng-virtual-keyboard-layout]="layout.layout"
+            />
+          </md-input-container>
+        </div>
+
+        <div class="content"
+          fxLayout="column"
+          fxFlex
+        >
+          <md-input-container>
+            <input value="" placeholder="{{ layout.placeholder }}"
+              mdInput
+              ng-virtual-keyboard
+              [ng-virtual-keyboard-layout]="layout.layout"
+              [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
+            />
+          </md-input-container>
+        </div>
+
+        <div class="content"
+          fxLayout="column"
+          fxFlex
+        >
+          <md-input-container>
+            <input value="" placeholder="{{ layout.placeholder }}" maxlength="5"
+              mdInput
+              ng-virtual-keyboard
+              [ng-virtual-keyboard-layout]="layout.layout"
+              [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
+            />
+          </md-input-container>
+        </div>
+      </div>
     </div>
   </div>
 </div>
