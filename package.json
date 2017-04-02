@@ -30,7 +30,8 @@
   "homepage": "https://github.com/protacon/ng-virtual-keyboard#readme",
   "dependencies": {
     "@angular/flex-layout": "^2.0.0-rc.1",
-    "@angular/material": "^2.0.0-beta.2"
+    "@angular/material": "^2.0.0-beta.2",
+    "hammerjs": "^2.0.8"
   },
   "devDependencies": {
     "@angular/common": "^4.0.1",

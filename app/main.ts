@@ -10,10 +10,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { AppComponent } from './app.component';
+import 'hammerjs';
 
 //noinspection TypeScriptCheckImport
 import { NgVirtualKeyboardModule }  from '@protacon/ng-virtual-keyboard';
+
+import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
