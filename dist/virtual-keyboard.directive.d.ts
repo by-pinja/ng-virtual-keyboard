@@ -3,9 +3,11 @@ import { MdDialog } from '@angular/material';
 export declare class NgVirtualKeyboardDirective {
     private element;
     private dialog;
+    private opened;
     layout: Array<Array<string>> | string;
     placeholder: string;
-    onClick(event: Event): void;
+    onFocus(): void;
+    onClick(): void;
     /**
      * Constructor of the class.
      *

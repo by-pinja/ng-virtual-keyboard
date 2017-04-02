@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var material_1 = require("@angular/material");
@@ -23,13 +14,28 @@ var NgVirtualKeyboardDirective = (function () {
     function NgVirtualKeyboardDirective(element, dialog) {
         this.element = element;
         this.dialog = dialog;
+        this.opened = false;
     }
-    NgVirtualKeyboardDirective.prototype.onClick = function (event) {
+    NgVirtualKeyboardDirective.prototype.onFocus = function () {
+        if (!this.opened) {
+            this.element.nativeElement.dispatchEvent(new Event('click', { bubbles: true }));
+        }
+    };
+    NgVirtualKeyboardDirective.prototype.onClick = function () {
+        var _this = this;
         var dialogRef;
         dialogRef = this.dialog.open(virtual_keyboard_component_1.VirtualKeyboardComponent);
         dialogRef.componentInstance.inputElement = this.element;
         dialogRef.componentInstance.layout = this.getLayout();
         dialogRef.componentInstance.placeholder = this.getPlaceHolder();
+        dialogRef
+            .afterClosed()
+            .subscribe(function () {
+            setTimeout(function () {
+                _this.opened = false;
+            }, 0);
+        });
+        this.opened = true;
     };
     /**
      * Getter for used keyboard layout.
@@ -73,26 +79,21 @@ var NgVirtualKeyboardDirective = (function () {
     };
     return NgVirtualKeyboardDirective;
 }());
-__decorate([
-    core_1.Input('ng-virtual-keyboard-layout'),
-    __metadata("design:type", Object)
-], NgVirtualKeyboardDirective.prototype, "layout", void 0);
-__decorate([
-    core_1.Input('ng-virtual-keyboard-placeholder'),
-    __metadata("design:type", String)
-], NgVirtualKeyboardDirective.prototype, "placeholder", void 0);
-__decorate([
-    core_1.HostListener('click', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Event]),
-    __metadata("design:returntype", void 0)
-], NgVirtualKeyboardDirective.prototype, "onClick", null);
-NgVirtualKeyboardDirective = __decorate([
-    core_1.Directive({
-        selector: '[ng-virtual-keyboard]'
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef,
-        material_1.MdDialog])
-], NgVirtualKeyboardDirective);
+NgVirtualKeyboardDirective.decorators = [
+    { type: core_1.Directive, args: [{
+                selector: '[ng-virtual-keyboard]'
+            },] },
+];
+/** @nocollapse */
+NgVirtualKeyboardDirective.ctorParameters = function () { return [
+    { type: core_1.ElementRef, },
+    { type: material_1.MdDialog, },
+]; };
+NgVirtualKeyboardDirective.propDecorators = {
+    'layout': [{ type: core_1.Input, args: ['ng-virtual-keyboard-layout',] },],
+    'placeholder': [{ type: core_1.Input, args: ['ng-virtual-keyboard-placeholder',] },],
+    'onFocus': [{ type: core_1.HostListener, args: ['focus', ['$event'],] },],
+    'onClick': [{ type: core_1.HostListener, args: ['click', ['$event'],] },],
+};
 exports.NgVirtualKeyboardDirective = NgVirtualKeyboardDirective;
 //# sourceMappingURL=virtual-keyboard.directive.js.map
