@@ -4,8 +4,8 @@ import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 
 // The browser platform with a compiler
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -13,7 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 
 //noinspection TypeScriptCheckImport
-import { NgVirtualKeyboardModule }  from 'ProtaconSolutions/ng-virtual-keyboard';
+import { NgVirtualKeyboardModule }  from '@protacon/ng-virtual-keyboard';
 
 @NgModule({
   imports: [

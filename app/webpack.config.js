@@ -1,38 +1,60 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   resolve: {
-    extensions: ['', '.ts', '.webpack.js', '.web.js', '.js'],
+    extensions: [
+      '.ts',
+      '.webpack.js',
+      '.web.js',
+      '.js',
+    ],
     alias: {
-      'ProtaconSolutions/ng-virtual-keyboard': '../src/index.ts'
+      '@protacon/ng-virtual-keyboard': '../src/index.ts',
     }
   },
   devtool: 'source-map',
   entry: './app/main.ts',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loaders: [
-          'ts',
-          'angular2-template-loader'
-        ]
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              include: [
+                'src/**/*.ts',
+                'app/**/*.ts',
+              ],
+            },
+          },
+          {
+            loader: 'angular2-template-loader',
+          },
+        ],
       },
       {
         test: /\.html$/,
-        loader: 'raw'
+        use: [
+          {
+            loader: 'raw-loader',
+          },
+        ],
       },
       {
         test: /\.scss$/,
-        loaders: ['raw', 'sass']
+        use: [
+          {
+            loader: 'raw-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
       },
-    ]
+    ],
   },
   plugins: [],
-  ts: {
-    include: ['src/**/*.ts', 'app/**/*.ts']
-  },
   output: {
     path: `${__dirname}/build/`,
     publicPath: '/build/',
@@ -42,11 +64,20 @@ const config = {
 
 if (process.env.NODE_ENV === 'prod') {
   config.plugins = [
-    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      }
+    }),
   ];
 
-  config.module.loaders.push({
-    test: /\.ts$/, loader: 'strip-loader?strip[]=debug,strip[]=console.log'
+  config.module.rules.push({
+    test: /\.ts$/,
+    use: [
+      {
+        loader: 'strip-loader?strip[]=debug,strip[]=console.log',
+      },
+    ],
   });
 }
 
