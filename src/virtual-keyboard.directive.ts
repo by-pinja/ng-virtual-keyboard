@@ -1,10 +1,15 @@
-import { Directive, HostListener, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { VirtualKeyboardComponent } from './virtual-keyboard.component';
 import {
-  alphaNumericKeyboard, KeyboardLayout, extendedKeyboard, numericKeyboard,
-  alphaNumericNordicKeyboard, extendedNordicKeyboard, phoneKeyboard
+  alphaNumericKeyboard,
+  alphaNumericNordicKeyboard,
+  extendedKeyboard,
+  extendedNordicKeyboard,
+  KeyboardLayout,
+  numericKeyboard,
+  phoneKeyboard
 } from './layouts';
 
 @Directive({
@@ -12,17 +17,36 @@ import {
 })
 
 export class NgVirtualKeyboardDirective {
+  private opened = false;
+
   @Input('ng-virtual-keyboard-layout') layout: Array<Array<string>>|string;
   @Input('ng-virtual-keyboard-placeholder') placeholder: string;
 
+  @HostListener('focus', ['$event'])
+  onFocus() {
+    if (!this.opened) {
+      this.element.nativeElement.dispatchEvent(new Event('click', {bubbles : true}));
+    }
+  }
+
   @HostListener('click', ['$event'])
-  onClick(event: Event) {
+  onClick() {
     let dialogRef: MdDialogRef<VirtualKeyboardComponent>;
 
     dialogRef = this.dialog.open(VirtualKeyboardComponent);
     dialogRef.componentInstance.inputElement = this.element;
     dialogRef.componentInstance.layout = this.getLayout();
     dialogRef.componentInstance.placeholder = this.getPlaceHolder();
+
+    dialogRef
+      .afterClosed()
+      .subscribe(() => {
+        setTimeout(() => {
+          this.opened = false;
+        }, 0);
+      });
+
+    this.opened = true;
   }
 
   /**
