@@ -1,9 +1,9 @@
 # ng-virtual-keyboard
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Build Status](https://travis-ci.org/ProtaconSolutions/ng-virtual-keyboard.png?branch=master)](https://travis-ci.org/ProtaconSolutions/ng-virtual-keyboard)
-[![codecov](https://codecov.io/gh/ProtaconSolutions/ng-virtual-keyboard/branch/master/graph/badge.svg)](https://codecov.io/gh/ProtaconSolutions/ng-virtual-keyboard)
-[![Dependency Status](https://david-dm.org/ProtaconSolutions/ng-virtual-keyboard.svg)](https://david-dm.org/ProtaconSolutions/ng-virtual-keyboard)
-[![devDependency Status](https://david-dm.org/ProtaconSolutions/ng-virtual-keyboard/dev-status.svg)](https://david-dm.org/ProtaconSolutions/ng-virtual-keyboard#info=devDependencies)
+[![Build Status](https://travis-ci.org/protacon/ng-virtual-keyboard.png?branch=master)](https://travis-ci.org/protacon/ng-virtual-keyboard)
+[![codecov](https://codecov.io/gh/protacon/ng-virtual-keyboard/branch/master/graph/badge.svg)](https://codecov.io/gh/protacon/ng-virtual-keyboard)
+[![Dependency Status](https://david-dm.org/protacon/ng-virtual-keyboard.svg)](https://david-dm.org/protacon/ng-virtual-keyboard)
+[![devDependency Status](https://david-dm.org/protacon/ng-virtual-keyboard/dev-status.svg)](https://david-dm.org/protacon/ng-virtual-keyboard#info=devDependencies)
 
 ## What is this?
 Virtual Keyboard for Angular applications
@@ -22,7 +22,7 @@ import { NgVirtualKeyboardModule }  from '@protacon/ng-virtual-keyboard';
 @NgModule({
   ...
   imports: [
-    ...,
+    ...
     NgVirtualKeyboardModule,
   ],
   ...
@@ -42,12 +42,11 @@ Simple usage example
 
 | Attribute | Description |
 | --- | --- |
-| ng-virtual-keyboard             | Required to initialize Virtual Keyboard to specified input |
-| ng-virtual-keyboard-layout      | Used layout on keyboard, following keyboards are defaults that you can use `alphaNumeric, alphaNumericNordic, extended, extendedNordic, numeric, phone` |
-| ng-virtual-keyboard-placeholder | Override placeholder text, if input has not any - or you want to override input placeholder value |
+| `ng-virtual-keyboard`             | Required to initialize Virtual Keyboard to specified input |
+| `ng-virtual-keyboard-layout`      | Used layout on keyboard, following keyboards are defaults that you can use `alphaNumeric, alphaNumericNordic, extended, extendedNordic, numeric, phone` |
+| `ng-virtual-keyboard-placeholder` | Override placeholder text, if input has not any - or you want to override input placeholder value |
 
 ## Demo
-
 https://protacon.github.io/ng-virtual-keyboard/
 
 ## License
