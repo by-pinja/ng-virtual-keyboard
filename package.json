@@ -9,10 +9,11 @@
     "start": "NODE_ENV=dev webpack-dev-server --quiet --port 4200 --host 0.0.0.0 --content-base app --config app/webpack.config --open",
     "lint": "tslint 'src/**/*.ts' 'app/**/*.ts'",
     "clean": "rimraf dist",
-    "build": "npm-run-all --serial clean build:ngc build:umd build:app",
+    "build": "npm-run-all --serial clean build:ngc build:umd build:app build:gh-pages",
     "build:ngc": "ngc -p tsconfig.ngc.json",
     "build:umd": "NODE_ENV=prod webpack",
-    "build:app": "NODE_ENV=prod webpack --config app/webpack.config"
+    "build:app": "NODE_ENV=prod webpack --config app/webpack.config",
+    "build:gh-pages": "cp app/index.html docs && cp -r app/build docs"
   },
   "repository": {
     "type": "git",
