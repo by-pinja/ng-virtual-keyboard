@@ -1,5 +1,6 @@
 # ng-virtual-keyboard
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![npm version](https://badge.fury.io/js/%40protacon%2Fng-virtual-keyboard.svg)](https://badge.fury.io/js/%40protacon%2Fng-virtual-keyboard)
 [![Build Status](https://travis-ci.org/protacon/ng-virtual-keyboard.png?branch=master)](https://travis-ci.org/protacon/ng-virtual-keyboard)
 [![codecov](https://codecov.io/gh/protacon/ng-virtual-keyboard/branch/master/graph/badge.svg)](https://codecov.io/gh/protacon/ng-virtual-keyboard)
 [![Dependency Status](https://david-dm.org/protacon/ng-virtual-keyboard.svg)](https://david-dm.org/protacon/ng-virtual-keyboard)
