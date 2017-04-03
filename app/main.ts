@@ -22,10 +22,14 @@ import { AppComponent } from './app.component';
     BrowserModule,
     MaterialModule,
     FlexLayoutModule,
-    NgVirtualKeyboardModule
+    NgVirtualKeyboardModule,
   ],
-  declarations: [ AppComponent ],
-  bootstrap: [ AppComponent ]
+  declarations: [
+    AppComponent,
+  ],
+  bootstrap: [
+    AppComponent,
+  ],
 })
 
 export class AppModule { }

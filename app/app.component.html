@@ -3,6 +3,14 @@
     <div fxLayout="column">
       <h1>@protacon/ng-virtual-keyboard</h1>
 
+      <div fxLayout="row" fxLayoutAlign="start center" class="badges">
+        <a href="{{ badge.link }}" *ngFor="let badge of badges"><img [src]="badge.img" /></a>
+      </div>
+    </div>
+
+    <div fxLayout="column">
+      <h2>What is this?</h2>
+
       <p>
         Virtual Keyboard for Angular applications.
       </p>
@@ -14,29 +22,40 @@
       <h4>Step 1: Install @protacon/ng-virtual-keyboard</h4>
 
       <pre>
-<code>$ npm install --save @protacon/ng-virtual-keyboard</code>
-      </pre>
+<code>$ npm install --save @protacon/ng-virtual-keyboard</code></pre>
 
       <h4>Step 2: Import the module</h4>
 
       <p>
-        Add `NgVirtualKeyboardModule` as an import in your app's root NgModule.
+        Add <code>NgVirtualKeyboardModule</code> as an import in your app's root NgModule.
       </p>
 
       <pre>
-<code>import {{ '{' }} NgVirtualKeyboardModule {{ '}' }}  from '@protacon/ng-virtual-keyboard';
+<code>import {{ '{' }} NgVirtualKeyboardModule {{ '}' }} from '@protacon/ng-virtual-keyboard';
 
 @NgModule({{ '{' }}
   ...
   imports: [
-  ...
-  NgVirtualKeyboardModule,
+    ...
+    NgVirtualKeyboardModule,
   ],
   ...
 {{ '}' }})
-export class AppModule {{ '{' }} {{ '}' }}</code>
-      </pre>
+export class AppModule {{ '{' }} {{ '}' }}</code></pre>
     </div>
+
+    <h2>Usage</h2>
+
+    <p>
+      Simple usage example
+    </p>
+
+    <pre>
+<code>&lt;input type="text" value=""
+  ng-virtual-keyboard
+  ng-virtual-keyboard-layout="alphaNumeric"
+  ng-virtual-keyboard-placeholder="Custom placeholder text"
+/&gt;</code></pre>
 
     <h2>Demos</h2>
 
