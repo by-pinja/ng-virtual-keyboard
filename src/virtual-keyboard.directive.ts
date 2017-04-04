@@ -31,22 +31,24 @@ export class NgVirtualKeyboardDirective {
 
   @HostListener('click', ['$event'])
   onClick() {
-    let dialogRef: MdDialogRef<VirtualKeyboardComponent>;
+    if (!this.opened) {
+      this.opened = true;
 
-    dialogRef = this.dialog.open(VirtualKeyboardComponent);
-    dialogRef.componentInstance.inputElement = this.element;
-    dialogRef.componentInstance.layout = this.getLayout();
-    dialogRef.componentInstance.placeholder = this.getPlaceHolder();
+      let dialogRef: MdDialogRef<VirtualKeyboardComponent>;
 
-    dialogRef
-      .afterClosed()
-      .subscribe(() => {
-        setTimeout(() => {
-          this.opened = false;
-        }, 0);
-      });
+      dialogRef = this.dialog.open(VirtualKeyboardComponent);
+      dialogRef.componentInstance.inputElement = this.element;
+      dialogRef.componentInstance.layout = this.getLayout();
+      dialogRef.componentInstance.placeholder = this.getPlaceHolder();
 
-    this.opened = true;
+      dialogRef
+        .afterClosed()
+        .subscribe(() => {
+          setTimeout(() => {
+            this.opened = false;
+          }, 0);
+        });
+    }
   }
 
   /**
