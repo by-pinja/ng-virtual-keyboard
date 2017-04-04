@@ -23,19 +23,21 @@ var NgVirtualKeyboardDirective = (function () {
     };
     NgVirtualKeyboardDirective.prototype.onClick = function () {
         var _this = this;
-        var dialogRef;
-        dialogRef = this.dialog.open(virtual_keyboard_component_1.VirtualKeyboardComponent);
-        dialogRef.componentInstance.inputElement = this.element;
-        dialogRef.componentInstance.layout = this.getLayout();
-        dialogRef.componentInstance.placeholder = this.getPlaceHolder();
-        dialogRef
-            .afterClosed()
-            .subscribe(function () {
-            setTimeout(function () {
-                _this.opened = false;
-            }, 0);
-        });
-        this.opened = true;
+        if (!this.opened) {
+            this.opened = true;
+            var dialogRef = void 0;
+            dialogRef = this.dialog.open(virtual_keyboard_component_1.VirtualKeyboardComponent);
+            dialogRef.componentInstance.inputElement = this.element;
+            dialogRef.componentInstance.layout = this.getLayout();
+            dialogRef.componentInstance.placeholder = this.getPlaceHolder();
+            dialogRef
+                .afterClosed()
+                .subscribe(function () {
+                setTimeout(function () {
+                    _this.opened = false;
+                }, 0);
+            });
+        }
     };
     /**
      * Getter for used keyboard layout.
