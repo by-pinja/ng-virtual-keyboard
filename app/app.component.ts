@@ -10,14 +10,14 @@ import { Component, ViewEncapsulation } from '@angular/core'
 export class AppComponent {
   public layouts = [
     {
-      name: 'Alpha-Numeric',
-      layout: 'alphaNumeric',
+      name: 'Alphanumeric',
+      layout: 'alphanumeric',
       placeholder: 'placeholder 1',
       placeholderCustom: 'custom placeholder 1',
     },
     {
-      name: 'Alpha-Numeric - Nordic',
-      layout: 'alphaNumericNordic',
+      name: 'Alphanumeric - Nordic',
+      layout: 'alphanumericNordic',
       placeholder: 'placeholder 2',
       placeholderCustom: 'custom placeholder 2',
     },
@@ -72,5 +72,26 @@ export class AppComponent {
       img: 'https://david-dm.org/protacon/ng-virtual-keyboard/dev-status.svg',
       link: 'https://david-dm.org/protacon/ng-virtual-keyboard#info=devDependencies',
     },
-  ]
+  ];
+
+  public customLayout = [
+    ['a:2', 'b', 'Backspace:3'],
+    ['c', 'd:2', 'Shift:3'],
+  ];
+
+  public invalid = false;
+
+  get customLayoutValue() {
+    return JSON.stringify(this.customLayout, null, 2);
+  }
+
+  set customLayoutValue(value) {
+    try {
+      this.customLayout = JSON.parse(value);
+
+      this.invalid = false;
+    } catch (error) {
+      this.invalid = true;
+    }
+  }
 }

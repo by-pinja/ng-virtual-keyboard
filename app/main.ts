@@ -16,10 +16,12 @@ import 'hammerjs';
 import { NgVirtualKeyboardModule }  from '@protacon/ng-virtual-keyboard';
 
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     MaterialModule,
     FlexLayoutModule,
     NgVirtualKeyboardModule,

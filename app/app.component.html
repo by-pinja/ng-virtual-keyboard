@@ -59,6 +59,8 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
 
     <h2>Demos</h2>
 
+    <h4>Built in layouts</h4>
+
     <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
       <div fxFlex="180px">
         <h3 class="text-right">
@@ -140,6 +142,42 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
             />
           </md-input-container>
         </div>
+      </div>
+    </div>
+
+    <h4>Custom Layout</h4>
+
+    <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
+      <strong class="text-right" fxFlex="180px"></strong>
+
+      <div class="content"
+        fxLayout="column"
+        fxFlex
+      >
+        <md-input-container>
+          <input value="" placeholder="Keyboard with custom layout"
+              mdInput
+              ng-virtual-keyboard
+              [ng-virtual-keyboard-layout]="customLayout"
+          />
+        </md-input-container>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-around start" fxFlex>
+      <strong class="text-right" fxFlex="180px">Custom layout definition</strong>
+
+      <div class="content"
+        fxLayout="column"
+        fxFlex
+      >
+        <md-input-container>
+          <textarea mdInput [(ngModel)]="customLayoutValue" rows="10"></textarea>
+
+          <md-hint *ngIf="invalid">
+            Given layout is not valid JSON - use <code>Array&lt;Array&lt;string&gt;&gt;</code> format
+          </md-hint>
+        </md-input-container>
       </div>
     </div>
   </div>

@@ -1,13 +1,13 @@
 export type KeyboardLayout = Array<Array<string>>;
 
-export const alphaNumericKeyboard: KeyboardLayout = [
+export const alphanumericKeyboard: KeyboardLayout = [
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Backspace:2'],
   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'CapsLock:2'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'Spacer', 'Shift:2'],
   ['z', 'x', 'c', 'v', 'b', 'n', 'm', 'Spacer:5'],
 ];
 
-export const alphaNumericNordicKeyboard: KeyboardLayout = [
+export const alphanumericNordicKeyboard: KeyboardLayout = [
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Spacer', 'Backspace:2'],
   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'å', 'CapsLock:2'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä', 'Shift:2'],

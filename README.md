@@ -44,7 +44,7 @@ Simple usage example
 | Attribute | Description |
 | --- | --- |
 | `ng-virtual-keyboard`             | Required to initialize Virtual Keyboard to specified input |
-| `ng-virtual-keyboard-layout`      | Used layout on keyboard, following keyboards are defaults that you can use `alphaNumeric, alphaNumericNordic, extended, extendedNordic, numeric, phone` |
+| `ng-virtual-keyboard-layout`      | Used layout on keyboard, following keyboards are defaults that you can use `alphanumeric, alphanumericNordic, extended, extendedNordic, numeric, phone` |
 | `ng-virtual-keyboard-placeholder` | Override placeholder text, if input has not any - or you want to override input placeholder value |
 
 ## Demo

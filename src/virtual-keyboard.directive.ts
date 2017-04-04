@@ -3,8 +3,8 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { VirtualKeyboardComponent } from './virtual-keyboard.component';
 import {
-  alphaNumericKeyboard,
-  alphaNumericNordicKeyboard,
+  alphanumericKeyboard,
+  alphanumericNordicKeyboard,
   extendedKeyboard,
   extendedNordicKeyboard,
   KeyboardLayout,
@@ -19,7 +19,7 @@ import {
 export class NgVirtualKeyboardDirective {
   private opened = false;
 
-  @Input('ng-virtual-keyboard-layout') layout: Array<Array<string>>|string;
+  @Input('ng-virtual-keyboard-layout') layout: KeyboardLayout|string;
   @Input('ng-virtual-keyboard-placeholder') placeholder: string;
 
   @HostListener('focus', ['$event'])
@@ -69,11 +69,11 @@ export class NgVirtualKeyboardDirective {
     let layout;
 
     switch (this.layout) {
-      case 'alphaNumeric':
-        layout = alphaNumericKeyboard;
+      case 'alphanumeric':
+        layout = alphanumericKeyboard;
         break;
-      case 'alphaNumericNordic':
-        layout = alphaNumericNordicKeyboard;
+      case 'alphanumericNordic':
+        layout = alphanumericNordicKeyboard;
         break;
       case 'extended':
         layout = extendedKeyboard;
