@@ -45,11 +45,11 @@ var NgVirtualKeyboardDirective = (function () {
     NgVirtualKeyboardDirective.prototype.getLayout = function () {
         var layout;
         switch (this.layout) {
-            case 'alphaNumeric':
-                layout = layouts_1.alphaNumericKeyboard;
+            case 'alphanumeric':
+                layout = layouts_1.alphanumericKeyboard;
                 break;
-            case 'alphaNumericNordic':
-                layout = layouts_1.alphaNumericNordicKeyboard;
+            case 'alphanumericNordic':
+                layout = layouts_1.alphanumericNordicKeyboard;
                 break;
             case 'extended':
                 layout = layouts_1.extendedKeyboard;

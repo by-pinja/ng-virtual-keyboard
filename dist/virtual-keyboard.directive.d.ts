@@ -1,10 +1,11 @@
 import { ElementRef } from '@angular/core';
 import { MdDialog } from '@angular/material';
+import { KeyboardLayout } from './layouts';
 export declare class NgVirtualKeyboardDirective {
     private element;
     private dialog;
     private opened;
-    layout: Array<Array<string>> | string;
+    layout: KeyboardLayout | string;
     placeholder: string;
     onFocus(): void;
     onClick(): void;
