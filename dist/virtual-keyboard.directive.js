@@ -15,15 +15,29 @@ var NgVirtualKeyboardDirective = (function () {
         this.element = element;
         this.dialog = dialog;
         this.opened = false;
+        this.focus = true;
     }
+    NgVirtualKeyboardDirective.prototype.onWindowBlur = function () {
+        this.focus = false;
+    };
+    NgVirtualKeyboardDirective.prototype.onWindowFocus = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.focus = true;
+        }, 0);
+    };
     NgVirtualKeyboardDirective.prototype.onFocus = function () {
-        if (!this.opened) {
-            this.element.nativeElement.dispatchEvent(new Event('click', { bubbles: true }));
-        }
+        this.openKeyboard();
     };
     NgVirtualKeyboardDirective.prototype.onClick = function () {
+        this.openKeyboard();
+    };
+    /**
+     * Method to open virtual keyboard
+     */
+    NgVirtualKeyboardDirective.prototype.openKeyboard = function () {
         var _this = this;
-        if (!this.opened) {
+        if (!this.opened && this.focus) {
             this.opened = true;
             var dialogRef = void 0;
             dialogRef = this.dialog.open(virtual_keyboard_component_1.VirtualKeyboardComponent);
@@ -94,8 +108,10 @@ NgVirtualKeyboardDirective.ctorParameters = function () { return [
 NgVirtualKeyboardDirective.propDecorators = {
     'layout': [{ type: core_1.Input, args: ['ng-virtual-keyboard-layout',] },],
     'placeholder': [{ type: core_1.Input, args: ['ng-virtual-keyboard-placeholder',] },],
-    'onFocus': [{ type: core_1.HostListener, args: ['focus', ['$event'],] },],
-    'onClick': [{ type: core_1.HostListener, args: ['click', ['$event'],] },],
+    'onWindowBlur': [{ type: core_1.HostListener, args: ['window:blur',] },],
+    'onWindowFocus': [{ type: core_1.HostListener, args: ['window:focus',] },],
+    'onFocus': [{ type: core_1.HostListener, args: ['focus',] },],
+    'onClick': [{ type: core_1.HostListener, args: ['click',] },],
 };
 exports.NgVirtualKeyboardDirective = NgVirtualKeyboardDirective;
 //# sourceMappingURL=virtual-keyboard.directive.js.map

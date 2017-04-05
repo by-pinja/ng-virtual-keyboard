@@ -234,15 +234,29 @@ var NgVirtualKeyboardDirective = (function () {
         this.element = element;
         this.dialog = dialog;
         this.opened = false;
+        this.focus = true;
     }
+    NgVirtualKeyboardDirective.prototype.onWindowBlur = function () {
+        this.focus = false;
+    };
+    NgVirtualKeyboardDirective.prototype.onWindowFocus = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.focus = true;
+        }, 0);
+    };
     NgVirtualKeyboardDirective.prototype.onFocus = function () {
-        if (!this.opened) {
-            this.element.nativeElement.dispatchEvent(new Event('click', { bubbles: true }));
-        }
+        this.openKeyboard();
     };
     NgVirtualKeyboardDirective.prototype.onClick = function () {
+        this.openKeyboard();
+    };
+    /**
+     * Method to open virtual keyboard
+     */
+    NgVirtualKeyboardDirective.prototype.openKeyboard = function () {
         var _this = this;
-        if (!this.opened) {
+        if (!this.opened && this.focus) {
             this.opened = true;
             var dialogRef = void 0;
             dialogRef = this.dialog.open(virtual_keyboard_component_1.VirtualKeyboardComponent);
@@ -309,13 +323,25 @@ __decorate([
     __metadata("design:type", String)
 ], NgVirtualKeyboardDirective.prototype, "placeholder", void 0);
 __decorate([
-    core_1.HostListener('focus', ['$event']),
+    core_1.HostListener('window:blur'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], NgVirtualKeyboardDirective.prototype, "onWindowBlur", null);
+__decorate([
+    core_1.HostListener('window:focus'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], NgVirtualKeyboardDirective.prototype, "onWindowFocus", null);
+__decorate([
+    core_1.HostListener('focus'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], NgVirtualKeyboardDirective.prototype, "onFocus", null);
 __decorate([
-    core_1.HostListener('click', ['$event']),
+    core_1.HostListener('click'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)

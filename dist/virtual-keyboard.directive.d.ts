@@ -5,8 +5,11 @@ export declare class NgVirtualKeyboardDirective {
     private element;
     private dialog;
     private opened;
+    private focus;
     layout: KeyboardLayout | string;
     placeholder: string;
+    onWindowBlur(): void;
+    onWindowFocus(): void;
     onFocus(): void;
     onClick(): void;
     /**
@@ -16,6 +19,10 @@ export declare class NgVirtualKeyboardDirective {
      * @param {MdDialog}    dialog
      */
     constructor(element: ElementRef, dialog: MdDialog);
+    /**
+     * Method to open virtual keyboard
+     */
+    private openKeyboard();
     /**
      * Getter for used keyboard layout.
      *
