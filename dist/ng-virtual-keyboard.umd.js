@@ -159,7 +159,7 @@ exports.notDisabledSpecialKeys = [
  */
 function isSpacer(key) {
     if (key.length > 1) {
-        return /^Spacer(:(\d+))?$/g.test(key);
+        return /^Spacer(:(\d+(\.\d+)?))?$/g.test(key);
     }
     return false;
 }
@@ -173,7 +173,7 @@ exports.isSpacer = isSpacer;
 function isSpecial(key) {
     if (key.length > 1) {
         return !!exports.specialKeys.filter(function (specialKey) {
-            var pattern = new RegExp("^(" + specialKey + ")(:(\\d+))?$", 'g');
+            var pattern = new RegExp("^(" + specialKey + ")(:(\\d+(\\.\\d+)?))?$", 'g');
             return pattern.test(key);
         }).length;
     }
@@ -755,7 +755,6 @@ var VirtualKeyboardKeyComponent = (function () {
     }
     /**
      * On init life cycle hook, within this we'll initialize following properties:
-     *  - disabled
      *  - special
      *  - keyValue
      *  - flexValue
@@ -766,10 +765,10 @@ var VirtualKeyboardKeyComponent = (function () {
         if (this.key.length > 1) {
             this.spacer = layouts_1.isSpacer(this.key);
             this.special = layouts_1.isSpecial(this.key);
-            var matches = /^(\w+)(:(\d+))?$/g.exec(this.key);
+            var matches = /^(\w+)(:(\d+(\.\d+)?))?$/g.exec(this.key);
             this.keyValue = matches[1];
             if (matches[3]) {
-                multiplier = parseInt(matches[3], 10);
+                multiplier = parseFloat(matches[3]);
                 fix = (multiplier - 1) * 4;
             }
         }

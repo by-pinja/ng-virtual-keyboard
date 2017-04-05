@@ -70,7 +70,7 @@ exports.notDisabledSpecialKeys = [
  */
 function isSpacer(key) {
     if (key.length > 1) {
-        return /^Spacer(:(\d+))?$/g.test(key);
+        return /^Spacer(:(\d+(\.\d+)?))?$/g.test(key);
     }
     return false;
 }
@@ -84,7 +84,7 @@ exports.isSpacer = isSpacer;
 function isSpecial(key) {
     if (key.length > 1) {
         return !!exports.specialKeys.filter(function (specialKey) {
-            var pattern = new RegExp("^(" + specialKey + ")(:(\\d+))?$", 'g');
+            var pattern = new RegExp("^(" + specialKey + ")(:(\\d+(\\.\\d+)?))?$", 'g');
             return pattern.test(key);
         }).length;
     }

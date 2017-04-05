@@ -16,7 +16,6 @@ export declare class VirtualKeyboardKeyComponent implements OnInit {
     constructor();
     /**
      * On init life cycle hook, within this we'll initialize following properties:
-     *  - disabled
      *  - special
      *  - keyValue
      *  - flexValue
