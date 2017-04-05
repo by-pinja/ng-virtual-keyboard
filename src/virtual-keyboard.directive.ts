@@ -18,20 +18,49 @@ import {
 
 export class NgVirtualKeyboardDirective {
   private opened = false;
+  private focus = true;
 
   @Input('ng-virtual-keyboard-layout') layout: KeyboardLayout|string;
   @Input('ng-virtual-keyboard-placeholder') placeholder: string;
 
-  @HostListener('focus', ['$event'])
-  onFocus() {
-    if (!this.opened) {
-      this.element.nativeElement.dispatchEvent(new Event('click', {bubbles : true}));
-    }
+  @HostListener('window:blur')
+  onWindowBlur() {
+    this.focus = false;
   }
 
-  @HostListener('click', ['$event'])
+  @HostListener('window:focus')
+  onWindowFocus() {
+    setTimeout(() => {
+      this.focus = true;
+    }, 0);
+  }
+
+  @HostListener('focus')
+  onFocus() {
+    this.openKeyboard();
+  }
+
+  @HostListener('click')
   onClick() {
-    if (!this.opened) {
+    this.openKeyboard();
+  }
+
+  /**
+   * Constructor of the class.
+   *
+   * @param {ElementRef}  element
+   * @param {MdDialog}    dialog
+   */
+  public constructor(
+    private element: ElementRef,
+    private dialog: MdDialog,
+  ) { }
+
+  /**
+   * Method to open virtual keyboard
+   */
+  private openKeyboard() {
+    if (!this.opened && this.focus) {
       this.opened = true;
 
       let dialogRef: MdDialogRef<VirtualKeyboardComponent>;
@@ -50,17 +79,6 @@ export class NgVirtualKeyboardDirective {
         });
     }
   }
-
-  /**
-   * Constructor of the class.
-   *
-   * @param {ElementRef}  element
-   * @param {MdDialog}    dialog
-   */
-  public constructor(
-    private element: ElementRef,
-    private dialog: MdDialog,
-  ) { }
 
   /**
    * Getter for used keyboard layout.
