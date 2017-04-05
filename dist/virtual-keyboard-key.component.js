@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var layouts_1 = require("./layouts");
 var VirtualKeyboardKeyComponent = (function () {
     /**
      * Constructor of the class.
@@ -9,30 +10,6 @@ var VirtualKeyboardKeyComponent = (function () {
         this.keyPress = new core_1.EventEmitter();
         this.special = false;
         this.spacer = false;
-        this.supportedSpecialKeys = [
-            'Enter',
-            'Backspace',
-            'Escape',
-            'CapsLock',
-            'SpaceBar',
-            'Spacer',
-            'Shift',
-        ];
-        this.icons = {
-            Enter: 'keyboard_return',
-            Backspace: 'backspace',
-            Escape: 'close',
-            SpaceBar: 'space_bar',
-            Shift: 'keyboard_capslock'
-        };
-        this.texts = {
-            CapsLock: 'Caps'
-        };
-        this.notDisabled = [
-            'Enter',
-            'Backspace',
-            'Escape',
-        ];
     }
     /**
      * On init life cycle hook, within this we'll initialize following properties:
@@ -42,15 +19,11 @@ var VirtualKeyboardKeyComponent = (function () {
      *  - flexValue
      */
     VirtualKeyboardKeyComponent.prototype.ngOnInit = function () {
-        var _this = this;
         var multiplier = 1;
         var fix = 0;
         if (this.key.length > 1) {
-            this.spacer = /^Spacer(:(\d+))?$/g.test(this.key);
-            this.special = !!this.supportedSpecialKeys.filter(function (specialKey) {
-                var pattern = new RegExp("^(" + specialKey + ")(:([0-9]))?$");
-                return pattern.test(_this.key);
-            }).length;
+            this.spacer = layouts_1.isSpacer(this.key);
+            this.special = layouts_1.isSpecial(this.key);
             var matches = /^(\w+)(:(\d+))?$/g.exec(this.key);
             this.keyValue = matches[1];
             if (matches[3]) {
@@ -62,11 +35,11 @@ var VirtualKeyboardKeyComponent = (function () {
             this.keyValue = this.key;
         }
         if (this.special) {
-            if (this.icons.hasOwnProperty(this.keyValue)) {
-                this.icon = this.icons[this.keyValue];
+            if (layouts_1.specialKeyIcons.hasOwnProperty(this.keyValue)) {
+                this.icon = layouts_1.specialKeyIcons[this.keyValue];
             }
-            else {
-                this.text = this.texts[this.keyValue];
+            else if (layouts_1.specialKeyTexts.hasOwnProperty(this.keyValue)) {
+                this.text = layouts_1.specialKeyTexts[this.keyValue];
             }
         }
         this.flexValue = multiplier * 64 + fix + "px";
@@ -80,7 +53,7 @@ var VirtualKeyboardKeyComponent = (function () {
         if (this.spacer) {
             return true;
         }
-        else if (this.disabled && this.notDisabled.indexOf(this.keyValue) !== -1) {
+        else if (this.disabled && layouts_1.notDisabledSpecialKeys.indexOf(this.keyValue) !== -1) {
             return false;
         }
         else {

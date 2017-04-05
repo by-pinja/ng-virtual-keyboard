@@ -10,10 +10,6 @@ export declare class VirtualKeyboardKeyComponent implements OnInit {
     keyValue: string;
     icon: string;
     text: string;
-    private supportedSpecialKeys;
-    private icons;
-    private texts;
-    private notDisabled;
     /**
      * Constructor of the class.
      */

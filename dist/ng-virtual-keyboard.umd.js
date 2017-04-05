@@ -7,7 +7,7 @@
 		exports["ng-virtual-keyboard"] = factory(require("@angular/core"), require("@angular/material"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/ReplaySubject"));
 	else
 		root["ng-virtual-keyboard"] = factory(root["@angular/core"], root["@angular/material"], root["@angular/common"], root["@angular/flex-layout"], root["@angular/forms"], root["rxjs/ReplaySubject"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -84,12 +84,127 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.alphanumericKeyboard = [
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Backspace:2'],
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'CapsLock:2'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'Spacer', 'Shift:2'],
+    ['z', 'x', 'c', 'v', 'b', 'n', 'm', 'Spacer:5'],
+];
+exports.alphanumericNordicKeyboard = [
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Spacer', 'Backspace:2'],
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'å', 'CapsLock:2'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä', 'Shift:2'],
+    ['z', 'x', 'c', 'v', 'b', 'n', 'm', 'Spacer:6'],
+];
+exports.extendedKeyboard = [
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Backspace:2'],
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'CapsLock:2'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'Spacer', 'Shift:2'],
+    ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-', '_', '+'],
+    ['Spacer', '@', 'SpaceBar:7', '#', 'Spacer:2'],
+];
+exports.extendedNordicKeyboard = [
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', 'Backspace:2'],
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'å', 'CapsLock:2'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä', 'Shift:2'],
+    ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-', '_', 'Spacer:2'],
+    ['Spacer', '@', 'SpaceBar:7', '#', 'Spacer:3'],
+];
+exports.numericKeyboard = [
+    ['1', '2', '3', 'Backspace:2'],
+    ['4', '5', '6', 'Spacer:2'],
+    ['7', '8', '9', 'Spacer:2'],
+    ['Spacer', '0', 'Spacer:3'],
+];
+exports.phoneKeyboard = [
+    ['1', '2', '3', 'Backspace:2'],
+    ['4', '5', '6', 'Spacer:2'],
+    ['7', '8', '9', 'Spacer:2'],
+    ['-', '0', '+', 'Spacer:2'],
+];
+exports.specialKeys = [
+    'Enter',
+    'Backspace',
+    'Escape',
+    'CapsLock',
+    'SpaceBar',
+    'Spacer',
+    'Shift',
+];
+exports.specialKeyIcons = {
+    Enter: 'keyboard_return',
+    Backspace: 'backspace',
+    Escape: 'close',
+    SpaceBar: 'space_bar',
+    Shift: 'keyboard_capslock'
+};
+exports.specialKeyTexts = {
+    CapsLock: 'Caps'
+};
+exports.notDisabledSpecialKeys = [
+    'Enter',
+    'Backspace',
+    'Escape',
+];
+/**
+ * Helper function to determine if given key is 'Spacer' or not.
+ *
+ * @param {string}  key
+ * @returns {boolean}
+ */
+function isSpacer(key) {
+    if (key.length > 1) {
+        return /^Spacer(:(\d+))?$/g.test(key);
+    }
+    return false;
+}
+exports.isSpacer = isSpacer;
+/**
+ * Helper function to determine if given key is special or not.
+ *
+ * @param {string}  key
+ * @returns {boolean}
+ */
+function isSpecial(key) {
+    if (key.length > 1) {
+        return !!exports.specialKeys.filter(function (specialKey) {
+            var pattern = new RegExp("^(" + specialKey + ")(:(\\d+))?$", 'g');
+            return pattern.test(key);
+        }).length;
+    }
+    return false;
+}
+exports.isSpecial = isSpecial;
+/**
+ * Function to change specified layout to CapsLock layout.
+ *
+ * @param {KeyboardLayout}  layout
+ * @param {boolean}         caps
+ * @returns {KeyboardLayout}
+ */
+function keyboardCapsLockLayout(layout, caps) {
+    return layout.map(function (row) {
+        return row.map(function (key) {
+            return isSpecial(key) ? key : (caps ? key.toUpperCase() : key.toLowerCase());
+        });
+    });
+}
+exports.keyboardCapsLockLayout = keyboardCapsLockLayout;
+
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -105,9 +220,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var material_1 = __webpack_require__(1);
+var material_1 = __webpack_require__(2);
 var virtual_keyboard_component_1 = __webpack_require__(4);
-var layouts_1 = __webpack_require__(3);
+var layouts_1 = __webpack_require__(1);
 var NgVirtualKeyboardDirective = (function () {
     /**
      * Constructor of the class.
@@ -216,68 +331,6 @@ exports.NgVirtualKeyboardDirective = NgVirtualKeyboardDirective;
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.alphanumericKeyboard = [
-    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Backspace:2'],
-    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'CapsLock:2'],
-    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'Spacer', 'Shift:2'],
-    ['z', 'x', 'c', 'v', 'b', 'n', 'm', 'Spacer:5'],
-];
-exports.alphanumericNordicKeyboard = [
-    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Spacer', 'Backspace:2'],
-    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'å', 'CapsLock:2'],
-    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä', 'Shift:2'],
-    ['z', 'x', 'c', 'v', 'b', 'n', 'm', 'Spacer:6'],
-];
-exports.extendedKeyboard = [
-    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Backspace:2'],
-    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'CapsLock:2'],
-    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'Spacer', 'Shift:2'],
-    ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-', '_', '+'],
-    ['Spacer', '@', 'SpaceBar:7', '#', 'Spacer:2'],
-];
-exports.extendedNordicKeyboard = [
-    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', 'Backspace:2'],
-    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'å', 'CapsLock:2'],
-    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä', 'Shift:2'],
-    ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-', '_', 'Spacer:2'],
-    ['Spacer', '@', 'SpaceBar:7', '#', 'Spacer:3'],
-];
-exports.numericKeyboard = [
-    ['1', '2', '3', 'Backspace:2'],
-    ['4', '5', '6', 'Spacer:2'],
-    ['7', '8', '9', 'Spacer:2'],
-    ['Spacer', '0', 'Spacer:3'],
-];
-exports.phoneKeyboard = [
-    ['1', '2', '3', 'Backspace:2'],
-    ['4', '5', '6', 'Spacer:2'],
-    ['7', '8', '9', 'Spacer:2'],
-    ['-', '0', '+', 'Spacer:2'],
-];
-/**
- * Function to change specified layout to CapsLock layout.
- *
- * @param {KeyboardLayout}  layout
- * @param {boolean}         caps
- * @returns {KeyboardLayout}
- */
-function keyboardCapsLockLayout(layout, caps) {
-    return layout.map(function (row) {
-        return row.map(function (key) {
-            return (key.length === 1) ? (caps ? key.toUpperCase() : key.toLowerCase()) : key;
-        });
-    });
-}
-exports.keyboardCapsLockLayout = keyboardCapsLockLayout;
-
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -294,8 +347,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var material_1 = __webpack_require__(1);
-var layouts_1 = __webpack_require__(3);
+var material_1 = __webpack_require__(2);
+var layouts_1 = __webpack_require__(1);
 var virtual_keyboard_service_1 = __webpack_require__(5);
 var VirtualKeyboardComponent = VirtualKeyboardComponent_1 = (function () {
     /**
@@ -621,9 +674,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
 var common_1 = __webpack_require__(9);
 var forms_1 = __webpack_require__(11);
-var material_1 = __webpack_require__(1);
+var material_1 = __webpack_require__(2);
 var flex_layout_1 = __webpack_require__(10);
-var virtual_keyboard_directive_1 = __webpack_require__(2);
+var virtual_keyboard_directive_1 = __webpack_require__(3);
 var virtual_keyboard_component_1 = __webpack_require__(4);
 var virtual_keyboard_key_component_1 = __webpack_require__(8);
 var virtual_keyboard_service_1 = __webpack_require__(5);
@@ -667,7 +720,7 @@ exports.NgVirtualKeyboardModule = NgVirtualKeyboardModule;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var virtual_keyboard_directive_1 = __webpack_require__(2);
+var virtual_keyboard_directive_1 = __webpack_require__(3);
 exports.NgVirtualKeyboardDirective = virtual_keyboard_directive_1.NgVirtualKeyboardDirective;
 var virtual_keyboard_module_1 = __webpack_require__(6);
 exports.NgVirtualKeyboardModule = virtual_keyboard_module_1.NgVirtualKeyboardModule;
@@ -690,6 +743,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
+var layouts_1 = __webpack_require__(1);
 var VirtualKeyboardKeyComponent = (function () {
     /**
      * Constructor of the class.
@@ -698,30 +752,6 @@ var VirtualKeyboardKeyComponent = (function () {
         this.keyPress = new core_1.EventEmitter();
         this.special = false;
         this.spacer = false;
-        this.supportedSpecialKeys = [
-            'Enter',
-            'Backspace',
-            'Escape',
-            'CapsLock',
-            'SpaceBar',
-            'Spacer',
-            'Shift',
-        ];
-        this.icons = {
-            Enter: 'keyboard_return',
-            Backspace: 'backspace',
-            Escape: 'close',
-            SpaceBar: 'space_bar',
-            Shift: 'keyboard_capslock'
-        };
-        this.texts = {
-            CapsLock: 'Caps'
-        };
-        this.notDisabled = [
-            'Enter',
-            'Backspace',
-            'Escape',
-        ];
     }
     /**
      * On init life cycle hook, within this we'll initialize following properties:
@@ -731,15 +761,11 @@ var VirtualKeyboardKeyComponent = (function () {
      *  - flexValue
      */
     VirtualKeyboardKeyComponent.prototype.ngOnInit = function () {
-        var _this = this;
         var multiplier = 1;
         var fix = 0;
         if (this.key.length > 1) {
-            this.spacer = /^Spacer(:(\d+))?$/g.test(this.key);
-            this.special = !!this.supportedSpecialKeys.filter(function (specialKey) {
-                var pattern = new RegExp("^(" + specialKey + ")(:([0-9]))?$");
-                return pattern.test(_this.key);
-            }).length;
+            this.spacer = layouts_1.isSpacer(this.key);
+            this.special = layouts_1.isSpecial(this.key);
             var matches = /^(\w+)(:(\d+))?$/g.exec(this.key);
             this.keyValue = matches[1];
             if (matches[3]) {
@@ -751,11 +777,11 @@ var VirtualKeyboardKeyComponent = (function () {
             this.keyValue = this.key;
         }
         if (this.special) {
-            if (this.icons.hasOwnProperty(this.keyValue)) {
-                this.icon = this.icons[this.keyValue];
+            if (layouts_1.specialKeyIcons.hasOwnProperty(this.keyValue)) {
+                this.icon = layouts_1.specialKeyIcons[this.keyValue];
             }
-            else {
-                this.text = this.texts[this.keyValue];
+            else if (layouts_1.specialKeyTexts.hasOwnProperty(this.keyValue)) {
+                this.text = layouts_1.specialKeyTexts[this.keyValue];
             }
         }
         this.flexValue = multiplier * 64 + fix + "px";
@@ -769,7 +795,7 @@ var VirtualKeyboardKeyComponent = (function () {
         if (this.spacer) {
             return true;
         }
-        else if (this.disabled && this.notDisabled.indexOf(this.keyValue) !== -1) {
+        else if (this.disabled && layouts_1.notDisabledSpecialKeys.indexOf(this.keyValue) !== -1) {
             return false;
         }
         else {

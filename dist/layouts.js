@@ -38,6 +38,59 @@ exports.phoneKeyboard = [
     ['7', '8', '9', 'Spacer:2'],
     ['-', '0', '+', 'Spacer:2'],
 ];
+exports.specialKeys = [
+    'Enter',
+    'Backspace',
+    'Escape',
+    'CapsLock',
+    'SpaceBar',
+    'Spacer',
+    'Shift',
+];
+exports.specialKeyIcons = {
+    Enter: 'keyboard_return',
+    Backspace: 'backspace',
+    Escape: 'close',
+    SpaceBar: 'space_bar',
+    Shift: 'keyboard_capslock'
+};
+exports.specialKeyTexts = {
+    CapsLock: 'Caps'
+};
+exports.notDisabledSpecialKeys = [
+    'Enter',
+    'Backspace',
+    'Escape',
+];
+/**
+ * Helper function to determine if given key is 'Spacer' or not.
+ *
+ * @param {string}  key
+ * @returns {boolean}
+ */
+function isSpacer(key) {
+    if (key.length > 1) {
+        return /^Spacer(:(\d+))?$/g.test(key);
+    }
+    return false;
+}
+exports.isSpacer = isSpacer;
+/**
+ * Helper function to determine if given key is special or not.
+ *
+ * @param {string}  key
+ * @returns {boolean}
+ */
+function isSpecial(key) {
+    if (key.length > 1) {
+        return !!exports.specialKeys.filter(function (specialKey) {
+            var pattern = new RegExp("^(" + specialKey + ")(:(\\d+))?$", 'g');
+            return pattern.test(key);
+        }).length;
+    }
+    return false;
+}
+exports.isSpecial = isSpecial;
 /**
  * Function to change specified layout to CapsLock layout.
  *
@@ -48,7 +101,7 @@ exports.phoneKeyboard = [
 function keyboardCapsLockLayout(layout, caps) {
     return layout.map(function (row) {
         return row.map(function (key) {
-            return (key.length === 1) ? (caps ? key.toUpperCase() : key.toLowerCase()) : key;
+            return isSpecial(key) ? key : (caps ? key.toUpperCase() : key.toLowerCase());
         });
     });
 }
