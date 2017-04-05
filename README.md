@@ -36,8 +36,8 @@ Simple usage example
 ```html
 <input type="text" value=""
   ng-virtual-keyboard
-  ng-virtual-keyboard-layout="layout"
-  ng-virtual-keyboard-placeholder="Placeholder"
+  ng-virtual-keyboard-layout="alphanumeric"
+  ng-virtual-keyboard-placeholder="Custom placeholder text"
 />
 ```
 

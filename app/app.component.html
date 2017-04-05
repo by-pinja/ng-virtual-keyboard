@@ -53,7 +53,7 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
     <pre>
 <code>&lt;input type="text" value=""
   ng-virtual-keyboard
-  ng-virtual-keyboard-layout="alphaNumeric"
+  ng-virtual-keyboard-layout="alphanumeric"
   ng-virtual-keyboard-placeholder="Custom placeholder text"
 /&gt;</code></pre>
 
@@ -134,11 +134,10 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
           fxFlex
         >
           <md-input-container>
-            <input value="" placeholder="{{ layout.placeholder }}" maxlength="5"
+            <input value="" placeholder="With maxlength=5" maxlength="5"
               mdInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
-              [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
             />
           </md-input-container>
         </div>
