@@ -80,7 +80,7 @@ export const notDisabledSpecialKeys = [
  */
 export function isSpacer(key: string): boolean {
   if (key.length > 1) {
-    return /^Spacer(:(\d+))?$/g.test(key);
+    return /^Spacer(:(\d+(\.\d+)?))?$/g.test(key);
   }
 
   return false;
@@ -95,7 +95,7 @@ export function isSpacer(key: string): boolean {
 export function isSpecial(key: string): boolean {
   if (key.length > 1) {
     return !!specialKeys.filter(specialKey => {
-      const pattern = new RegExp(`^(${specialKey})(:(\\d+))?$`, 'g');
+      const pattern = new RegExp(`^(${specialKey})(:(\\d+(\\.\\d+)?))?$`, 'g');
 
       return pattern.test(key);
     }).length;

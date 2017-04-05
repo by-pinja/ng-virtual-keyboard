@@ -75,8 +75,8 @@ export class AppComponent {
   ];
 
   public customLayout = [
-    ['a:2', 'b', 'Backspace:3'],
-    ['c', 'd:2', 'Shift:3'],
+    ['a', 'b:2', 'Backspace:3'],
+    ['c:1.33', 'd:1.67', 'Shift:3'],
   ];
 
   public invalid = false;

@@ -62,7 +62,6 @@ export class VirtualKeyboardKeyComponent implements OnInit {
 
   /**
    * On init life cycle hook, within this we'll initialize following properties:
-   *  - disabled
    *  - special
    *  - keyValue
    *  - flexValue
@@ -75,12 +74,12 @@ export class VirtualKeyboardKeyComponent implements OnInit {
       this.spacer = isSpacer(this.key);
       this.special = isSpecial(this.key);
 
-      const matches = /^(\w+)(:(\d+))?$/g.exec(this.key);
+      const matches = /^(\w+)(:(\d+(\.\d+)?))?$/g.exec(this.key);
 
       this.keyValue = matches[1];
 
       if (matches[3]) {
-        multiplier = parseInt(matches[3], 10);
+        multiplier = parseFloat(matches[3]);
         fix = (multiplier - 1) * 4;
       }
     } else {
