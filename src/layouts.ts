@@ -15,7 +15,7 @@ export const alphanumericNordicKeyboard: KeyboardLayout = [
 ];
 
 export const extendedKeyboard: KeyboardLayout = [
-  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',  'Backspace:2'],
+  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Backspace:2'],
   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'CapsLock:2'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'Spacer', 'Shift:2'],
   ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-', '_', '+'],
@@ -44,6 +44,66 @@ export const phoneKeyboard: KeyboardLayout = [
   ['-', '0', '+', 'Spacer:2'],
 ];
 
+export const specialKeys: Array<string> = [
+  'Enter',
+  'Backspace',
+  'Escape',
+  'CapsLock',
+  'SpaceBar',
+  'Spacer',
+  'Shift',
+];
+
+export const specialKeyIcons = {
+  Enter: 'keyboard_return',
+  Backspace: 'backspace',
+  Escape: 'close',
+  SpaceBar: 'space_bar',
+  Shift: 'keyboard_capslock'
+};
+
+export const specialKeyTexts = {
+  CapsLock: 'Caps'
+};
+
+export const notDisabledSpecialKeys = [
+  'Enter',
+  'Backspace',
+  'Escape',
+];
+
+/**
+ * Helper function to determine if given key is 'Spacer' or not.
+ *
+ * @param {string}  key
+ * @returns {boolean}
+ */
+export function isSpacer(key: string): boolean {
+  if (key.length > 1) {
+    return /^Spacer(:(\d+))?$/g.test(key);
+  }
+
+  return false;
+}
+
+/**
+ * Helper function to determine if given key is special or not.
+ *
+ * @param {string}  key
+ * @returns {boolean}
+ */
+export function isSpecial(key: string): boolean {
+  if (key.length > 1) {
+    return !!specialKeys.filter(specialKey => {
+      const pattern = new RegExp(`^(${specialKey})(:(\\d+))?$`, 'g');
+
+      return pattern.test(key);
+    }).length;
+  }
+
+  return false;
+}
+
 /**
  * Function to change specified layout to CapsLock layout.
  *
@@ -54,7 +114,7 @@ export const phoneKeyboard: KeyboardLayout = [
 export function keyboardCapsLockLayout(layout: KeyboardLayout, caps: boolean): KeyboardLayout {
   return layout.map((row: Array<string>): Array<string> => {
     return row.map((key: string): string => {
-      return (key.length === 1) ? (caps ? key.toUpperCase() : key.toLowerCase()) : key;
+      return isSpecial(key) ? key : (caps ? key.toUpperCase() : key.toLowerCase());
     });
   });
 }

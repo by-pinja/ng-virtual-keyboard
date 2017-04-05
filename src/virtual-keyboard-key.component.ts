@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { KeyPressInterface } from './key-press.interface';
+import { isSpacer, isSpecial, notDisabledSpecialKeys, specialKeyIcons, specialKeyTexts } from './layouts';
 
 @Component({
   selector: 'virtual-keyboard-key',
@@ -54,31 +55,6 @@ export class VirtualKeyboardKeyComponent implements OnInit {
   public icon: string;
   public text: string;
 
-  private supportedSpecialKeys: Array<string> = [
-    'Enter',
-    'Backspace',
-    'Escape',
-    'CapsLock',
-    'SpaceBar',
-    'Spacer',
-    'Shift',
-  ];
-  private icons = {
-    Enter: 'keyboard_return',
-    Backspace: 'backspace',
-    Escape: 'close',
-    SpaceBar: 'space_bar',
-    Shift: 'keyboard_capslock'
-  };
-  private texts = {
-    CapsLock: 'Caps'
-  };
-  private notDisabled = [
-    'Enter',
-    'Backspace',
-    'Escape',
-  ];
-
   /**
    * Constructor of the class.
    */
@@ -96,12 +72,8 @@ export class VirtualKeyboardKeyComponent implements OnInit {
     let fix = 0;
 
     if (this.key.length > 1) {
-      this.spacer = /^Spacer(:(\d+))?$/g.test(this.key);
-      this.special = !!this.supportedSpecialKeys.filter(specialKey => {
-        const pattern = new RegExp(`^(${specialKey})(:([0-9]))?$`);
-
-        return pattern.test(this.key);
-      }).length;
+      this.spacer = isSpacer(this.key);
+      this.special = isSpecial(this.key);
 
       const matches = /^(\w+)(:(\d+))?$/g.exec(this.key);
 
@@ -116,10 +88,10 @@ export class VirtualKeyboardKeyComponent implements OnInit {
     }
 
     if (this.special) {
-      if (this.icons.hasOwnProperty(this.keyValue)) {
-        this.icon = this.icons[this.keyValue];
-      } else {
-        this.text = this.texts[this.keyValue];
+      if (specialKeyIcons.hasOwnProperty(this.keyValue)) {
+        this.icon = specialKeyIcons[this.keyValue];
+      } else if (specialKeyTexts.hasOwnProperty(this.keyValue)) {
+        this.text = specialKeyTexts[this.keyValue];
       }
     }
 
@@ -134,7 +106,7 @@ export class VirtualKeyboardKeyComponent implements OnInit {
   public isDisabled(): boolean {
     if (this.spacer) {
       return true;
-    } else if (this.disabled && this.notDisabled.indexOf(this.keyValue) !== -1) {
+    } else if (this.disabled && notDisabledSpecialKeys.indexOf(this.keyValue) !== -1) {
       return false;
     } else {
       return this.disabled;
