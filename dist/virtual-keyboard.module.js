@@ -29,7 +29,10 @@ NgVirtualKeyboardModule.decorators = [
                     forms_1.FormsModule,
                     forms_1.ReactiveFormsModule,
                     flex_layout_1.FlexLayoutModule,
-                    material_1.MaterialModule,
+                    material_1.MdButtonModule,
+                    material_1.MdDialogModule,
+                    material_1.MdIconModule,
+                    material_1.MdInputModule,
                 ],
                 entryComponents: [
                     virtual_keyboard_component_1.VirtualKeyboardComponent,
