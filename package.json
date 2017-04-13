@@ -28,6 +28,7 @@
     "url": "https://github.com/protacon/ng-virtual-keyboard/issues"
   },
   "homepage": "https://github.com/protacon/ng-virtual-keyboard#readme",
+  "prefer-stable": true,
   "dependencies": {
     "@angular/animations": "^4.0.2",
     "@angular/flex-layout": "^2.0.0-beta.7",
