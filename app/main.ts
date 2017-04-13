@@ -5,24 +5,27 @@ import 'zone.js/dist/zone';
 
 // The browser platform with a compiler
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
-import { MaterialModule } from '@angular/material';
+import { MdInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import 'hammerjs';
+import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 //noinspection TypeScriptCheckImport
 import { NgVirtualKeyboardModule }  from '@protacon/ng-virtual-keyboard';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
-    MaterialModule,
+    MdInputModule,
     FlexLayoutModule,
     NgVirtualKeyboardModule,
   ],

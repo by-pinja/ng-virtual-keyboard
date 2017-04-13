@@ -1,4 +1,13 @@
 const webpack = require('webpack');
+const path = require('path');
+
+const _root = path.resolve(__dirname, '..');
+
+function root(args) {
+  args = Array.prototype.slice.call(arguments, 0);
+
+  return path.join.apply(path, [_root].concat(args));
+}
 
 const config = {
   resolve: {
@@ -34,6 +43,17 @@ const config = {
         ],
       },
       {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+        ],
+      },
+      {
         test: /\.html$/,
         use: [
           {
@@ -54,7 +74,14 @@ const config = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new webpack.ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)@angular/,
+      root('./src'), // location of your src
+      {} // a map of your routes
+    ),
+  ],
   output: {
     path: `${__dirname}/build/`,
     publicPath: '/build/',
@@ -63,13 +90,13 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'prod') {
-  config.plugins = [
+  config.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
       }
-    }),
-  ];
+    })
+  );
 
   config.module.rules.push({
     test: /\.ts$/,

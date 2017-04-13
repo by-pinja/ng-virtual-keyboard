@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
+import { MdButtonModule, MdDialogModule, MdIconModule, MdInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NgVirtualKeyboardDirective } from './virtual-keyboard.directive';
@@ -23,7 +23,10 @@ import { VirtualKeyboardService } from './virtual-keyboard.service';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MaterialModule,
+    MdButtonModule,
+    MdDialogModule,
+    MdIconModule,
+    MdInputModule,
   ],
   entryComponents: [
     VirtualKeyboardComponent,
