@@ -17,7 +17,7 @@ import { KeyPressInterface } from './key-press.interface';
             <md-icon>check</md-icon>
           </button>
     
-          <input type="text"
+          <input type="{{inputType}}"
             mdInput
             #keyboardInput
             (click)="updateCaretPosition()"
@@ -74,6 +74,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   public placeholder: string;
   public disabled: boolean;
   public maxLength: number|string;
+  public inputType: string;
 
   private caretPosition: number;
   private shift = false;
@@ -128,6 +129,8 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.keyboardInput.nativeElement.focus();
     }, 0);
+
+    this.inputType = this.inputElement.nativeElement.type || 'text';
 
     this.virtualKeyboardService.shift$.subscribe((shift: boolean) => {
       this.shift = shift;

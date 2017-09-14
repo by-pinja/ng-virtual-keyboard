@@ -83,6 +83,10 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
       <strong class="content" fxFlex>
         With maxlength="5"
       </strong>
+
+      <strong class="content" fxFlex>
+        Password
+      </strong>
     </div>
 
     <div fxLayout="row" fxFlex *ngFor="let layout of layouts">
@@ -135,6 +139,20 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
         >
           <md-input-container>
             <input value="" placeholder="With maxlength=5" maxlength="5"
+              mdInput
+              ng-virtual-keyboard
+              [ng-virtual-keyboard-layout]="layout.layout"
+            />
+          </md-input-container>
+        </div>
+
+        <div class="content"
+          fxLayout="column"
+          fxFlex
+        >
+          <md-input-container>
+            <input value="" placeholder="Password"
+              type="password"
               mdInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
