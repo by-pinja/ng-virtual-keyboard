@@ -7,7 +7,7 @@ import { isSpacer, isSpecial, notDisabledSpecialKeys, specialKeyIcons, specialKe
   selector: 'virtual-keyboard-key',
   template: `
     <button
-      md-raised-button
+      mat-raised-button
       color="primary"
       fxFlex="{{ flexValue }}"
       [class.spacer]="spacer"
@@ -17,7 +17,7 @@ import { isSpacer, isSpecial, notDisabledSpecialKeys, specialKeyIcons, specialKe
       <span *ngIf="!special">{{ keyValue }}</span>
     
       <span *ngIf="special">
-        <md-icon *ngIf="icon">{{ icon }}</md-icon>
+        <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
     
         {{ text }}
       </span>

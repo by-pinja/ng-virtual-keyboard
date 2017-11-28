@@ -93,53 +93,53 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
           fxLayout="column"
           fxFlex
         >
-          <md-input-container>
+          <mat-input-container>
             <input value=""
-              mdInput
+              matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
             />
-          </md-input-container>
+          </mat-input-container>
         </div>
 
         <div class="content"
           fxLayout="column"
           fxFlex
         >
-          <md-input-container>
+          <mat-input-container>
             <input value="" placeholder="{{ layout.placeholder }}"
-              mdInput
+              matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
             />
-          </md-input-container>
+          </mat-input-container>
         </div>
 
         <div class="content"
           fxLayout="column"
           fxFlex
         >
-          <md-input-container>
+          <mat-input-container>
             <input value="" placeholder="{{ layout.placeholder }}"
-              mdInput
+              matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
               [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
             />
-          </md-input-container>
+          </mat-input-container>
         </div>
 
         <div class="content"
           fxLayout="column"
           fxFlex
         >
-          <md-input-container>
+          <mat-input-container>
             <input value="" placeholder="With maxlength=5" maxlength="5"
-              mdInput
+              matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
             />
-          </md-input-container>
+          </mat-input-container>
         </div>
       </div>
     </div>
@@ -153,13 +153,13 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
         fxLayout="column"
         fxFlex
       >
-        <md-input-container>
+        <mat-input-container>
           <input value="" placeholder="Keyboard with custom layout"
-              mdInput
+              matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="customLayout"
           />
-        </md-input-container>
+        </mat-input-container>
       </div>
     </div>
 
@@ -170,13 +170,13 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
         fxLayout="column"
         fxFlex
       >
-        <md-input-container>
-          <textarea mdInput [(ngModel)]="customLayoutValue" rows="10"></textarea>
+        <mat-input-container>
+          <textarea matInput [(ngModel)]="customLayoutValue" rows="10"></textarea>
 
-          <md-hint *ngIf="invalid">
+          <mat-hint *ngIf="invalid">
             Given layout is not valid JSON - use <code>Array&lt;Array&lt;string&gt;&gt;</code> format
-          </md-hint>
-        </md-input-container>
+          </mat-hint>
+        </mat-input-container>
       </div>
     </div>
   </div>

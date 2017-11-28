@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { VirtualKeyboardComponent } from './virtual-keyboard.component';
 import {
@@ -49,11 +49,11 @@ export class NgVirtualKeyboardDirective {
    * Constructor of the class.
    *
    * @param {ElementRef}  element
-   * @param {MdDialog}    dialog
+   * @param {MatDialog}    dialog
    */
   public constructor(
     private element: ElementRef,
-    private dialog: MdDialog,
+    private dialog: MatDialog,
   ) { }
 
   /**
@@ -63,7 +63,7 @@ export class NgVirtualKeyboardDirective {
     if (!this.opened && this.focus) {
       this.opened = true;
 
-      let dialogRef: MdDialogRef<VirtualKeyboardComponent>;
+      let dialogRef: MatDialogRef<VirtualKeyboardComponent>;
 
       dialogRef = this.dialog.open(VirtualKeyboardComponent);
       dialogRef.componentInstance.inputElement = this.element;
