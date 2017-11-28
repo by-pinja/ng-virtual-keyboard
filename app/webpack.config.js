@@ -30,12 +30,7 @@ const config = {
         use: [
           {
             loader: 'ts-loader',
-            options: {
-              include: [
-                'src/**/*.ts',
-                'app/**/*.ts',
-              ],
-            },
+            options: {},
           },
           {
             loader: 'angular2-template-loader',

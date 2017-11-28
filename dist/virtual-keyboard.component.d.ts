@@ -1,10 +1,10 @@
 import { ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { KeyboardLayout } from './layouts';
 import { VirtualKeyboardService } from './virtual-keyboard.service';
 import { KeyPressInterface } from './key-press.interface';
 export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
-    dialogRef: MdDialogRef<VirtualKeyboardComponent>;
+    dialogRef: MatDialogRef<VirtualKeyboardComponent>;
     private virtualKeyboardService;
     keyboardInput: ElementRef;
     inputElement: ElementRef;
@@ -25,10 +25,10 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
     /**
      * Constructor of the class.
      *
-     * @param {MdDialogRef<VirtualKeyboardComponent>} dialogRef
+     * @param {MatDialogRef<VirtualKeyboardComponent>} dialogRef
      * @param {VirtualKeyboardService}                virtualKeyboardService
      */
-    constructor(dialogRef: MdDialogRef<VirtualKeyboardComponent>, virtualKeyboardService: VirtualKeyboardService);
+    constructor(dialogRef: MatDialogRef<VirtualKeyboardComponent>, virtualKeyboardService: VirtualKeyboardService);
     /**
      * On init life cycle hook, this will do following:
      *  1) Set focus to virtual keyboard input field

@@ -6,7 +6,7 @@
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "start": "NODE_ENV=dev webpack-dev-server --progress --profile --port 4200 --host 0.0.0.0 --content-base app --config app/webpack.config --open",
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --progress --profile --port 4200 --host localhost --content-base app --config app/webpack.config --open",
     "lint": "tslint 'src/**/*.ts' 'app/**/*.ts'",
     "clean": "rimraf dist",
     "build": "npm-run-all --serial clean build:ngc build:umd build:app build:gh-pages",
@@ -33,6 +33,8 @@
     "@angular/animations": "^4.0.2",
     "@angular/flex-layout": "^2.0.0-beta.7",
     "@angular/material": "^2.0.0-beta.3",
+    "@angular/cdk": "^2.0.0-beta.3",
+    "cross-env": "^5.1.1",
     "hammerjs": "^2.0.8"
   },
   "devDependencies": {
@@ -59,7 +61,7 @@
     "sass-loader": "^6.0.3",
     "strip-loader": "^0.1.2",
     "style-loader": "^0.16.1",
-    "ts-loader": "^2.0.3",
+    "ts-loader": "2.3.7",
     "tslint": "^5.0.0",
     "typescript": "^2.2.2",
     "webpack": "^2.3.3",
