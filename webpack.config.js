@@ -39,12 +39,6 @@ module.exports = {
         use: [
           {
             loader: 'ts-loader',
-            options: {
-              include: [
-                'src/**/*.ts',
-                'app/**/*.ts',
-              ],
-            },
           },
           {
             loader: 'angular2-template-loader',
