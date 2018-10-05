@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var ReplaySubject_1 = require("rxjs/ReplaySubject");
-var VirtualKeyboardService = (function () {
+var ReplaySubject_1 = require("rxjs/internal/ReplaySubject");
+var VirtualKeyboardService = /** @class */ (function () {
     function VirtualKeyboardService() {
         this.shift$ = new ReplaySubject_1.ReplaySubject(1);
         this.capsLock$ = new ReplaySubject_1.ReplaySubject(1);
@@ -58,12 +58,10 @@ var VirtualKeyboardService = (function () {
     VirtualKeyboardService.prototype.reset = function () {
         this.setShift(false);
     };
+    VirtualKeyboardService.decorators = [
+        { type: core_1.Injectable },
+    ];
     return VirtualKeyboardService;
 }());
-VirtualKeyboardService.decorators = [
-    { type: core_1.Injectable },
-];
-/** @nocollapse */
-VirtualKeyboardService.ctorParameters = function () { return []; };
 exports.VirtualKeyboardService = VirtualKeyboardService;
 //# sourceMappingURL=virtual-keyboard.service.js.map

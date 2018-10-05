@@ -1,10 +1,10 @@
 import { ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { KeyboardLayout } from './layouts';
 import { VirtualKeyboardService } from './virtual-keyboard.service';
 import { KeyPressInterface } from './key-press.interface';
 export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
-    dialogRef: MdDialogRef<VirtualKeyboardComponent>;
+    dialogRef: MatDialogRef<VirtualKeyboardComponent>;
     private virtualKeyboardService;
     keyboardInput: ElementRef;
     inputElement: ElementRef;
@@ -21,14 +21,14 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
      * @param {number}                                start
      * @param {number}                                end
      */
-    private static setSelectionRange(input, start, end);
+    private static setSelectionRange;
     /**
      * Constructor of the class.
      *
-     * @param {MdDialogRef<VirtualKeyboardComponent>} dialogRef
-     * @param {VirtualKeyboardService}                virtualKeyboardService
+     * @param {MatDialogRef<VirtualKeyboardComponent>} dialogRef
+     * @param {VirtualKeyboardService}                 virtualKeyboardService
      */
-    constructor(dialogRef: MdDialogRef<VirtualKeyboardComponent>, virtualKeyboardService: VirtualKeyboardService);
+    constructor(dialogRef: MatDialogRef<VirtualKeyboardComponent>, virtualKeyboardService: VirtualKeyboardService);
     /**
      * On init life cycle hook, this will do following:
      *  1) Set focus to virtual keyboard input field
@@ -67,13 +67,13 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
     /**
      * Method to check is virtual keyboard input is disabled.
      */
-    private checkDisabled();
+    private checkDisabled;
     /**
      * Method to handle "normal" key press event, this will add specified character to input value.
      *
      * @param {string}  keyValue
      */
-    private handleNormalKey(keyValue);
+    private handleNormalKey;
     /**
      * Method to handle "Special" key press events.
      *  1) Enter
@@ -83,7 +83,7 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
      *  6) Shift, toggle current layout state
      *  5) SpaceBar
      */
-    private handleSpecialKey(event);
+    private handleSpecialKey;
     /**
      * Method to dispatch necessary keyboard events to current input element.
      *
@@ -91,5 +91,5 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
      *
      * @param {KeyPressInterface} event
      */
-    private dispatchEvents(event);
+    private dispatchEvents;
 }

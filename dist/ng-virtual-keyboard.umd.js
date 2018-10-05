@@ -1,12 +1,12 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("@angular/core"), require("@angular/material"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/ReplaySubject"));
+		module.exports = factory(require("@angular/core"), require("@angular/material"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/internal/ReplaySubject"));
 	else if(typeof define === 'function' && define.amd)
-		define(["@angular/core", "@angular/material", "@angular/common", "@angular/flex-layout", "@angular/forms", "rxjs/ReplaySubject"], factory);
+		define(["@angular/core", "@angular/material", "@angular/common", "@angular/flex-layout", "@angular/forms", "rxjs/internal/ReplaySubject"], factory);
 	else if(typeof exports === 'object')
-		exports["ng-virtual-keyboard"] = factory(require("@angular/core"), require("@angular/material"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/ReplaySubject"));
+		exports["ng-virtual-keyboard"] = factory(require("@angular/core"), require("@angular/material"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/internal/ReplaySubject"));
 	else
-		root["ng-virtual-keyboard"] = factory(root["@angular/core"], root["@angular/material"], root["@angular/common"], root["@angular/flex-layout"], root["@angular/forms"], root["rxjs/ReplaySubject"]);
+		root["ng-virtual-keyboard"] = factory(root["@angular/core"], root["@angular/material"], root["@angular/common"], root["@angular/flex-layout"], root["@angular/forms"], root["rxjs/internal/ReplaySubject"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -223,12 +223,12 @@ var core_1 = __webpack_require__(0);
 var material_1 = __webpack_require__(2);
 var virtual_keyboard_component_1 = __webpack_require__(4);
 var layouts_1 = __webpack_require__(1);
-var NgVirtualKeyboardDirective = (function () {
+var NgVirtualKeyboardDirective = /** @class */ (function () {
     /**
      * Constructor of the class.
      *
      * @param {ElementRef}  element
-     * @param {MdDialog}    dialog
+     * @param {MatDialog}    dialog
      */
     function NgVirtualKeyboardDirective(element, dialog) {
         this.element = element;
@@ -312,47 +312,47 @@ var NgVirtualKeyboardDirective = (function () {
     NgVirtualKeyboardDirective.prototype.getPlaceHolder = function () {
         return this.placeholder ? this.placeholder : this.element.nativeElement.placeholder;
     };
+    __decorate([
+        core_1.Input('ng-virtual-keyboard-layout'),
+        __metadata("design:type", Object)
+    ], NgVirtualKeyboardDirective.prototype, "layout", void 0);
+    __decorate([
+        core_1.Input('ng-virtual-keyboard-placeholder'),
+        __metadata("design:type", String)
+    ], NgVirtualKeyboardDirective.prototype, "placeholder", void 0);
+    __decorate([
+        core_1.HostListener('window:blur'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], NgVirtualKeyboardDirective.prototype, "onWindowBlur", null);
+    __decorate([
+        core_1.HostListener('window:focus'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], NgVirtualKeyboardDirective.prototype, "onWindowFocus", null);
+    __decorate([
+        core_1.HostListener('focus'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], NgVirtualKeyboardDirective.prototype, "onFocus", null);
+    __decorate([
+        core_1.HostListener('click'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], NgVirtualKeyboardDirective.prototype, "onClick", null);
+    NgVirtualKeyboardDirective = __decorate([
+        core_1.Directive({
+            selector: '[ng-virtual-keyboard]'
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef,
+            material_1.MatDialog])
+    ], NgVirtualKeyboardDirective);
     return NgVirtualKeyboardDirective;
 }());
-__decorate([
-    core_1.Input('ng-virtual-keyboard-layout'),
-    __metadata("design:type", Object)
-], NgVirtualKeyboardDirective.prototype, "layout", void 0);
-__decorate([
-    core_1.Input('ng-virtual-keyboard-placeholder'),
-    __metadata("design:type", String)
-], NgVirtualKeyboardDirective.prototype, "placeholder", void 0);
-__decorate([
-    core_1.HostListener('window:blur'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], NgVirtualKeyboardDirective.prototype, "onWindowBlur", null);
-__decorate([
-    core_1.HostListener('window:focus'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], NgVirtualKeyboardDirective.prototype, "onWindowFocus", null);
-__decorate([
-    core_1.HostListener('focus'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], NgVirtualKeyboardDirective.prototype, "onFocus", null);
-__decorate([
-    core_1.HostListener('click'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], NgVirtualKeyboardDirective.prototype, "onClick", null);
-NgVirtualKeyboardDirective = __decorate([
-    core_1.Directive({
-        selector: '[ng-virtual-keyboard]'
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef,
-        material_1.MdDialog])
-], NgVirtualKeyboardDirective);
 exports.NgVirtualKeyboardDirective = NgVirtualKeyboardDirective;
 
 
@@ -376,18 +376,19 @@ var core_1 = __webpack_require__(0);
 var material_1 = __webpack_require__(2);
 var layouts_1 = __webpack_require__(1);
 var virtual_keyboard_service_1 = __webpack_require__(5);
-var VirtualKeyboardComponent = VirtualKeyboardComponent_1 = (function () {
+var VirtualKeyboardComponent = /** @class */ (function () {
     /**
      * Constructor of the class.
      *
-     * @param {MdDialogRef<VirtualKeyboardComponent>} dialogRef
-     * @param {VirtualKeyboardService}                virtualKeyboardService
+     * @param {MatDialogRef<VirtualKeyboardComponent>} dialogRef
+     * @param {VirtualKeyboardService}                 virtualKeyboardService
      */
     function VirtualKeyboardComponent(dialogRef, virtualKeyboardService) {
         this.dialogRef = dialogRef;
         this.virtualKeyboardService = virtualKeyboardService;
         this.shift = false;
     }
+    VirtualKeyboardComponent_1 = VirtualKeyboardComponent;
     /**
      * Helper method to set cursor in input to correct place.
      *
@@ -586,23 +587,23 @@ var VirtualKeyboardComponent = VirtualKeyboardComponent_1 = (function () {
         // And set focus to input
         this.keyboardInput.nativeElement.focus();
     };
+    var VirtualKeyboardComponent_1;
+    __decorate([
+        core_1.ViewChild('keyboardInput'),
+        __metadata("design:type", core_1.ElementRef)
+    ], VirtualKeyboardComponent.prototype, "keyboardInput", void 0);
+    VirtualKeyboardComponent = VirtualKeyboardComponent_1 = __decorate([
+        core_1.Component({
+            selector: 'virtual-keyboard',
+            template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <mat-form-field>\n          <button class=\"close\" color=\"primary\" mat-button mat-mini-fab\n            (click)=\"close()\"\n          >\n            <mat-icon>check</mat-icon>\n          </button>\n    \n          <input type=\"text\"\n            matInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\"\n          />\n        </mat-form-field>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
+            styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
+        }),
+        __metadata("design:paramtypes", [material_1.MatDialogRef,
+            virtual_keyboard_service_1.VirtualKeyboardService])
+    ], VirtualKeyboardComponent);
     return VirtualKeyboardComponent;
 }());
-__decorate([
-    core_1.ViewChild('keyboardInput'),
-    __metadata("design:type", core_1.ElementRef)
-], VirtualKeyboardComponent.prototype, "keyboardInput", void 0);
-VirtualKeyboardComponent = VirtualKeyboardComponent_1 = __decorate([
-    core_1.Component({
-        selector: 'virtual-keyboard',
-        template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <md-input-container>\n          <button class=\"close\" color=\"primary\" md-mini-fab\n            (click)=\"close()\"\n          >\n            <md-icon>check</md-icon>\n          </button>\n    \n          <input type=\"text\"\n            mdInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\"\n          />\n        </md-input-container>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
-        styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
-    }),
-    __metadata("design:paramtypes", [material_1.MdDialogRef,
-        virtual_keyboard_service_1.VirtualKeyboardService])
-], VirtualKeyboardComponent);
 exports.VirtualKeyboardComponent = VirtualKeyboardComponent;
-var VirtualKeyboardComponent_1;
 
 
 /***/ }),
@@ -620,7 +621,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
 var ReplaySubject_1 = __webpack_require__(12);
-var VirtualKeyboardService = (function () {
+var VirtualKeyboardService = /** @class */ (function () {
     function VirtualKeyboardService() {
         this.shift$ = new ReplaySubject_1.ReplaySubject(1);
         this.capsLock$ = new ReplaySubject_1.ReplaySubject(1);
@@ -676,11 +677,11 @@ var VirtualKeyboardService = (function () {
     VirtualKeyboardService.prototype.reset = function () {
         this.setShift(false);
     };
+    VirtualKeyboardService = __decorate([
+        core_1.Injectable()
+    ], VirtualKeyboardService);
     return VirtualKeyboardService;
 }());
-VirtualKeyboardService = __decorate([
-    core_1.Injectable()
-], VirtualKeyboardService);
 exports.VirtualKeyboardService = VirtualKeyboardService;
 
 
@@ -706,39 +707,39 @@ var virtual_keyboard_directive_1 = __webpack_require__(3);
 var virtual_keyboard_component_1 = __webpack_require__(4);
 var virtual_keyboard_key_component_1 = __webpack_require__(8);
 var virtual_keyboard_service_1 = __webpack_require__(5);
-var NgVirtualKeyboardModule = (function () {
+var NgVirtualKeyboardModule = /** @class */ (function () {
     function NgVirtualKeyboardModule() {
     }
+    NgVirtualKeyboardModule = __decorate([
+        core_1.NgModule({
+            declarations: [
+                virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
+                virtual_keyboard_component_1.VirtualKeyboardComponent,
+                virtual_keyboard_key_component_1.VirtualKeyboardKeyComponent,
+            ],
+            providers: [
+                virtual_keyboard_service_1.VirtualKeyboardService,
+            ],
+            imports: [
+                common_1.CommonModule,
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
+                flex_layout_1.FlexLayoutModule,
+                material_1.MatButtonModule,
+                material_1.MatDialogModule,
+                material_1.MatIconModule,
+                material_1.MatInputModule,
+            ],
+            entryComponents: [
+                virtual_keyboard_component_1.VirtualKeyboardComponent,
+            ],
+            exports: [
+                virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
+            ]
+        })
+    ], NgVirtualKeyboardModule);
     return NgVirtualKeyboardModule;
 }());
-NgVirtualKeyboardModule = __decorate([
-    core_1.NgModule({
-        declarations: [
-            virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
-            virtual_keyboard_component_1.VirtualKeyboardComponent,
-            virtual_keyboard_key_component_1.VirtualKeyboardKeyComponent,
-        ],
-        providers: [
-            virtual_keyboard_service_1.VirtualKeyboardService,
-        ],
-        imports: [
-            common_1.CommonModule,
-            forms_1.FormsModule,
-            forms_1.ReactiveFormsModule,
-            flex_layout_1.FlexLayoutModule,
-            material_1.MdButtonModule,
-            material_1.MdDialogModule,
-            material_1.MdIconModule,
-            material_1.MdInputModule,
-        ],
-        entryComponents: [
-            virtual_keyboard_component_1.VirtualKeyboardComponent,
-        ],
-        exports: [
-            virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
-        ]
-    })
-], NgVirtualKeyboardModule);
 exports.NgVirtualKeyboardModule = NgVirtualKeyboardModule;
 
 
@@ -773,7 +774,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
 var layouts_1 = __webpack_require__(1);
-var VirtualKeyboardKeyComponent = (function () {
+var VirtualKeyboardKeyComponent = /** @class */ (function () {
     /**
      * Constructor of the class.
      */
@@ -838,28 +839,28 @@ var VirtualKeyboardKeyComponent = (function () {
     VirtualKeyboardKeyComponent.prototype.onKeyPress = function () {
         this.keyPress.emit({ special: this.special, keyValue: this.keyValue, key: this.key });
     };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], VirtualKeyboardKeyComponent.prototype, "key", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], VirtualKeyboardKeyComponent.prototype, "disabled", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], VirtualKeyboardKeyComponent.prototype, "keyPress", void 0);
+    VirtualKeyboardKeyComponent = __decorate([
+        core_1.Component({
+            selector: 'virtual-keyboard-key',
+            template: "\n    <button\n      mat-raised-button\n      color=\"primary\"\n      fxFlex=\"{{ flexValue }}\"\n      [class.spacer]=\"spacer\"\n      [disabled]=\"isDisabled()\"\n      (click)=\"onKeyPress()\"\n    >\n      <span *ngIf=\"!special\">{{ keyValue }}</span>\n    \n      <span *ngIf=\"special\">\n        <mat-icon *ngIf=\"icon\">{{ icon }}</mat-icon>\n    \n        {{ text }}\n      </span>\n    </button>\n  ",
+            styles: ["\n    .mat-button,\n    .mat-icon-button,\n    .mat-raised-button {\n      min-width: 64px;\n      min-height: 64px;\n      padding: 0;\n      margin: 2px;\n      font-size: 32px;\n      line-height: 32px;\n    }\n    \n    .mat-button.spacer,\n    .mat-icon-button.spacer,\n    .mat-raised-button.spacer {\n      background-color: transparent;\n    }\n  "]
+        }),
+        __metadata("design:paramtypes", [])
+    ], VirtualKeyboardKeyComponent);
     return VirtualKeyboardKeyComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], VirtualKeyboardKeyComponent.prototype, "key", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], VirtualKeyboardKeyComponent.prototype, "disabled", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], VirtualKeyboardKeyComponent.prototype, "keyPress", void 0);
-VirtualKeyboardKeyComponent = __decorate([
-    core_1.Component({
-        selector: 'virtual-keyboard-key',
-        template: "\n    <button\n      md-raised-button\n      color=\"primary\"\n      fxFlex=\"{{ flexValue }}\"\n      [class.spacer]=\"spacer\"\n      [disabled]=\"isDisabled()\"\n      (click)=\"onKeyPress()\"\n    >\n      <span *ngIf=\"!special\">{{ keyValue }}</span>\n    \n      <span *ngIf=\"special\">\n        <md-icon *ngIf=\"icon\">{{ icon }}</md-icon>\n    \n        {{ text }}\n      </span>\n    </button>\n  ",
-        styles: ["\n    .mat-button,\n    .mat-icon-button,\n    .mat-raised-button {\n      min-width: 64px;\n      min-height: 64px;\n      padding: 0;\n      margin: 2px;\n      font-size: 32px;\n      line-height: 32px;\n    }\n    \n    .mat-button.spacer,\n    .mat-icon-button.spacer,\n    .mat-raised-button.spacer {\n      background-color: transparent;\n    }\n  "]
-    }),
-    __metadata("design:paramtypes", [])
-], VirtualKeyboardKeyComponent);
 exports.VirtualKeyboardKeyComponent = VirtualKeyboardKeyComponent;
 
 

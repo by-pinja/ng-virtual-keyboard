@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { keyboardCapsLockLayout, KeyboardLayout } from './layouts';
 import { VirtualKeyboardService } from './virtual-keyboard.service';
@@ -10,21 +10,21 @@ import { KeyPressInterface } from './key-press.interface';
   template: `
     <div class="container">
       <div fxLayout="column">
-        <md-input-container>
-          <button class="close" color="primary" md-mini-fab
+        <mat-form-field>
+          <button class="close" color="primary" mat-button mat-mini-fab
             (click)="close()"
           >
-            <md-icon>check</md-icon>
+            <mat-icon>check</mat-icon>
           </button>
     
           <input type="text"
-            mdInput
+            matInput
             #keyboardInput
             (click)="updateCaretPosition()"
             [(ngModel)]="inputElement.nativeElement.value" placeholder="{{ placeholder }}"
             [maxLength]="maxLength"
           />
-        </md-input-container>
+        </mat-form-field>
     
         <div fxLayout="row" fxLayoutAlign="center center"
           *ngFor="let row of layout; let rowIndex = index"
@@ -107,11 +107,11 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   /**
    * Constructor of the class.
    *
-   * @param {MdDialogRef<VirtualKeyboardComponent>} dialogRef
-   * @param {VirtualKeyboardService}                virtualKeyboardService
+   * @param {MatDialogRef<VirtualKeyboardComponent>} dialogRef
+   * @param {VirtualKeyboardService}                 virtualKeyboardService
    */
   public constructor(
-    public dialogRef: MdDialogRef<VirtualKeyboardComponent>,
+    public dialogRef: MatDialogRef<VirtualKeyboardComponent>,
     private virtualKeyboardService: VirtualKeyboardService
   ) { }
 
