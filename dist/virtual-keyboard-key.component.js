@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var layouts_1 = require("./layouts");
-var VirtualKeyboardKeyComponent = (function () {
+var VirtualKeyboardKeyComponent = /** @class */ (function () {
     /**
      * Constructor of the class.
      */
@@ -67,21 +67,21 @@ var VirtualKeyboardKeyComponent = (function () {
     VirtualKeyboardKeyComponent.prototype.onKeyPress = function () {
         this.keyPress.emit({ special: this.special, keyValue: this.keyValue, key: this.key });
     };
+    VirtualKeyboardKeyComponent.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'virtual-keyboard-key',
+                    template: "\n    <button\n      mat-raised-button\n      color=\"primary\"\n      fxFlex=\"{{ flexValue }}\"\n      [class.spacer]=\"spacer\"\n      [disabled]=\"isDisabled()\"\n      (click)=\"onKeyPress()\"\n    >\n      <span *ngIf=\"!special\">{{ keyValue }}</span>\n    \n      <span *ngIf=\"special\">\n        <mat-icon *ngIf=\"icon\">{{ icon }}</mat-icon>\n    \n        {{ text }}\n      </span>\n    </button>\n  ",
+                    styles: ["\n    .mat-button,\n    .mat-icon-button,\n    .mat-raised-button {\n      min-width: 64px;\n      min-height: 64px;\n      padding: 0;\n      margin: 2px;\n      font-size: 32px;\n      line-height: 32px;\n    }\n    \n    .mat-button.spacer,\n    .mat-icon-button.spacer,\n    .mat-raised-button.spacer {\n      background-color: transparent;\n    }\n  "]
+                },] },
+    ];
+    /** @nocollapse */
+    VirtualKeyboardKeyComponent.ctorParameters = function () { return []; };
+    VirtualKeyboardKeyComponent.propDecorators = {
+        key: [{ type: core_1.Input }],
+        disabled: [{ type: core_1.Input }],
+        keyPress: [{ type: core_1.Output }]
+    };
     return VirtualKeyboardKeyComponent;
 }());
-VirtualKeyboardKeyComponent.decorators = [
-    { type: core_1.Component, args: [{
-                selector: 'virtual-keyboard-key',
-                template: "\n    <button\n      md-raised-button\n      color=\"primary\"\n      fxFlex=\"{{ flexValue }}\"\n      [class.spacer]=\"spacer\"\n      [disabled]=\"isDisabled()\"\n      (click)=\"onKeyPress()\"\n    >\n      <span *ngIf=\"!special\">{{ keyValue }}</span>\n    \n      <span *ngIf=\"special\">\n        <md-icon *ngIf=\"icon\">{{ icon }}</md-icon>\n    \n        {{ text }}\n      </span>\n    </button>\n  ",
-                styles: ["\n    .mat-button,\n    .mat-icon-button,\n    .mat-raised-button {\n      min-width: 64px;\n      min-height: 64px;\n      padding: 0;\n      margin: 2px;\n      font-size: 32px;\n      line-height: 32px;\n    }\n    \n    .mat-button.spacer,\n    .mat-icon-button.spacer,\n    .mat-raised-button.spacer {\n      background-color: transparent;\n    }\n  "]
-            },] },
-];
-/** @nocollapse */
-VirtualKeyboardKeyComponent.ctorParameters = function () { return []; };
-VirtualKeyboardKeyComponent.propDecorators = {
-    'key': [{ type: core_1.Input },],
-    'disabled': [{ type: core_1.Input },],
-    'keyPress': [{ type: core_1.Output },],
-};
 exports.VirtualKeyboardKeyComponent = VirtualKeyboardKeyComponent;
 //# sourceMappingURL=virtual-keyboard-key.component.js.map

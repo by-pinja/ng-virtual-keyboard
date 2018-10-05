@@ -4,12 +4,12 @@ var core_1 = require("@angular/core");
 var material_1 = require("@angular/material");
 var layouts_1 = require("./layouts");
 var virtual_keyboard_service_1 = require("./virtual-keyboard.service");
-var VirtualKeyboardComponent = (function () {
+var VirtualKeyboardComponent = /** @class */ (function () {
     /**
      * Constructor of the class.
      *
-     * @param {MdDialogRef<VirtualKeyboardComponent>} dialogRef
-     * @param {VirtualKeyboardService}                virtualKeyboardService
+     * @param {MatDialogRef<VirtualKeyboardComponent>} dialogRef
+     * @param {VirtualKeyboardService}                 virtualKeyboardService
      */
     function VirtualKeyboardComponent(dialogRef, virtualKeyboardService) {
         this.dialogRef = dialogRef;
@@ -214,22 +214,22 @@ var VirtualKeyboardComponent = (function () {
         // And set focus to input
         this.keyboardInput.nativeElement.focus();
     };
+    VirtualKeyboardComponent.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'virtual-keyboard',
+                    template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <mat-form-field>\n          <button class=\"close\" color=\"primary\" mat-button mat-mini-fab\n            (click)=\"close()\"\n          >\n            <mat-icon>check</mat-icon>\n          </button>\n    \n          <input type=\"text\"\n            matInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\"\n          />\n        </mat-form-field>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
+                    styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
+                },] },
+    ];
+    /** @nocollapse */
+    VirtualKeyboardComponent.ctorParameters = function () { return [
+        { type: material_1.MatDialogRef },
+        { type: virtual_keyboard_service_1.VirtualKeyboardService }
+    ]; };
+    VirtualKeyboardComponent.propDecorators = {
+        keyboardInput: [{ type: core_1.ViewChild, args: ['keyboardInput',] }]
+    };
     return VirtualKeyboardComponent;
 }());
-VirtualKeyboardComponent.decorators = [
-    { type: core_1.Component, args: [{
-                selector: 'virtual-keyboard',
-                template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <md-input-container>\n          <button class=\"close\" color=\"primary\" md-mini-fab\n            (click)=\"close()\"\n          >\n            <md-icon>check</md-icon>\n          </button>\n    \n          <input type=\"text\"\n            mdInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\"\n          />\n        </md-input-container>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
-                styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
-            },] },
-];
-/** @nocollapse */
-VirtualKeyboardComponent.ctorParameters = function () { return [
-    { type: material_1.MdDialogRef, },
-    { type: virtual_keyboard_service_1.VirtualKeyboardService, },
-]; };
-VirtualKeyboardComponent.propDecorators = {
-    'keyboardInput': [{ type: core_1.ViewChild, args: ['keyboardInput',] },],
-};
 exports.VirtualKeyboardComponent = VirtualKeyboardComponent;
 //# sourceMappingURL=virtual-keyboard.component.js.map
