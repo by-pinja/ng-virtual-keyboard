@@ -5,7 +5,6 @@
 | New feature?  | yes/no
 | BC breaks?    | yes/no
 | Deprecations? | yes/no
-| Tests pass?   | yes/no
 | Fixed tickets | #... <!-- #-prefixed issue number(s), if any -->
 | License       | MIT
 
