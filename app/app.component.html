@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="space-around start" fxFlex fxFill>
+<div fxLayout="row wrap" fxLayoutAlign="space-around start" >
   <div class="container">
     <div fxLayout="column">
       <h1>@protacon/ng-virtual-keyboard</h1>
@@ -44,139 +44,110 @@
 export class AppModule {{ '{' }} {{ '}' }}</code></pre>
     </div>
 
-    <h2>Usage</h2>
+    <div fxLayout="column wrap">
+      <h2>Usage</h2>
 
-    <p>
-      Simple usage example
-    </p>
+      <p>
+        Simple usage example
+      </p>
 
-    <pre>
+      <pre>
 <code>&lt;input type="text" value=""
   ng-virtual-keyboard
   ng-virtual-keyboard-layout="alphanumeric"
   ng-virtual-keyboard-placeholder="Custom placeholder text"
 /&gt;</code></pre>
-
-    <h2>Demos</h2>
-
-    <h4>Built in layouts</h4>
-
-    <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
-      <div fxFlex="180px">
-        <h3 class="text-right">
-          <sup>Layout</sup>/<sub>Info</sub>
-        </h3>
-      </div>
-
-      <strong class="content" fxFlex>
-        Minimal
-      </strong>
-
-      <strong class="content" fxFlex>
-        With placeholder
-      </strong>
-
-      <strong class="content" fxFlex>
-        With custom placeholder
-      </strong>
-
-      <strong class="content" fxFlex>
-        With maxlength="5"
-      </strong>
     </div>
 
-    <div fxLayout="row" fxFlex *ngFor="let layout of layouts">
-      <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
-        <strong class="text-right" fxFlex="180px">{{ layout.name }}</strong>
 
-        <div class="content"
-          fxLayout="column"
-          fxFlex
-        >
-          <md-input-container>
+    <div fxLayout="column wrap">
+      <h2>Demos</h2>
+
+      <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+        <div fxFlex="180px">
+          <h3 class="text-right">
+            <sup>Layout</sup>/<sub>Info</sub>
+          </h3>
+        </div>
+
+        <strong class="content" fxFlex="150px">
+          Minimal
+        </strong>
+
+        <strong class="content" fxFlex="150px">
+          With placeholder
+        </strong>
+
+        <strong class="content" fxFlex="150px">
+          With custom placeholder
+        </strong>
+
+        <strong class="content" fxFlex="150px">
+          With maxlength="5"
+        </strong>
+      </div>
+
+      <div fxLayout="column" *ngFor="let layout of layouts">
+        <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+          <strong class="text-right" fxFlex="180px">{{ layout.name }}</strong>
+
+          <mat-form-field fxFlex="150px">
             <input value=""
-              mdInput
+              matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
             />
-          </md-input-container>
-        </div>
+          </mat-form-field>
 
-        <div class="content"
-          fxLayout="column"
-          fxFlex
-        >
-          <md-input-container>
+          <mat-form-field fxFlex="150px">
             <input value="" placeholder="{{ layout.placeholder }}"
-              mdInput
+              matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
             />
-          </md-input-container>
-        </div>
+          </mat-form-field>
 
-        <div class="content"
-          fxLayout="column"
-          fxFlex
-        >
-          <md-input-container>
+          <mat-form-field fxFlex="150px">
             <input value="" placeholder="{{ layout.placeholder }}"
-              mdInput
+              matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
               [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
             />
-          </md-input-container>
-        </div>
+          </mat-form-field>
 
-        <div class="content"
-          fxLayout="column"
-          fxFlex
-        >
-          <md-input-container>
+          <mat-form-field fxFlex="150px">
             <input value="" placeholder="With maxlength=5" maxlength="5"
-              mdInput
+              matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
             />
-          </md-input-container>
+          </mat-form-field>
         </div>
       </div>
-    </div>
 
-    <h4>Custom Layout</h4>
+      <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+        <strong class="text-right" fxFlex="180px">Custom Layout</strong>
 
-    <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
-      <strong class="text-right" fxFlex="180px"></strong>
-
-      <div class="content"
-        fxLayout="column"
-        fxFlex
-      >
-        <md-input-container>
+        <mat-form-field fxFlex>
           <input value="" placeholder="Keyboard with custom layout"
-              mdInput
-              ng-virtual-keyboard
-              [ng-virtual-keyboard-layout]="customLayout"
+            matInput
+            ng-virtual-keyboard
+            [ng-virtual-keyboard-layout]="customLayout"
           />
-        </md-input-container>
+        </mat-form-field>
       </div>
-    </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-around start" fxFlex>
-      <strong class="text-right" fxFlex="180px">Custom layout definition</strong>
+      <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="space-around start">
+        <strong class="text-right" fxFlex="180px">Custom layout definition</strong>
 
-      <div class="content"
-        fxLayout="column"
-        fxFlex
-      >
-        <md-input-container>
-          <textarea mdInput [(ngModel)]="customLayoutValue" rows="10"></textarea>
+        <mat-form-field fxFlex>
+          <textarea matInput [(ngModel)]="customLayoutValue" rows="10"></textarea>
 
-          <md-hint *ngIf="invalid">
+          <mat-hint *ngIf="invalid">
             Given layout is not valid JSON - use <code>Array&lt;Array&lt;string&gt;&gt;</code> format
-          </md-hint>
-        </md-input-container>
+          </mat-hint>
+        </mat-form-field>
       </div>
     </div>
   </div>
