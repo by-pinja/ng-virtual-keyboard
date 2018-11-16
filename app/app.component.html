@@ -129,10 +129,11 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
           </mat-form-field>
 
           <mat-form-field fxFlex="150px">
-            <input value="" placeholder="Type input Password" 
+            <input value="" placeholder="Type input Password"
+              type="password" 
               matInput
               ng-virtual-keyboard
-              [ng-virtual-keyboard-type]="password"
+              ng-virtual-keyboard-type="password"
               [ng-virtual-keyboard-layout]="layout.layout"
             />
           </mat-form-field>

@@ -10,6 +10,7 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
     inputElement: ElementRef;
     layout: KeyboardLayout;
     placeholder: string;
+    type: string;
     disabled: boolean;
     maxLength: number | string;
     private caretPosition;

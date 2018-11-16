@@ -263,6 +263,7 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
             dialogRef.componentInstance.inputElement = this.element;
             dialogRef.componentInstance.layout = this.getLayout();
             dialogRef.componentInstance.placeholder = this.getPlaceHolder();
+            dialogRef.componentInstance.type = this.getType();
             dialogRef
                 .afterClosed()
                 .subscribe(function () {
@@ -312,6 +313,14 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
     NgVirtualKeyboardDirective.prototype.getPlaceHolder = function () {
         return this.placeholder ? this.placeholder : this.element.nativeElement.placeholder;
     };
+    /**
+     * Getter for used type for virtual keyboard input field.
+     *
+     * @return {string}
+     */
+    NgVirtualKeyboardDirective.prototype.getType = function () {
+        return this.type ? this.type : this.element.nativeElement.type;
+    };
     __decorate([
         core_1.Input('ng-virtual-keyboard-layout'),
         __metadata("design:type", Object)
@@ -320,6 +329,10 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
         core_1.Input('ng-virtual-keyboard-placeholder'),
         __metadata("design:type", String)
     ], NgVirtualKeyboardDirective.prototype, "placeholder", void 0);
+    __decorate([
+        core_1.Input('ng-virtual-keyboard-type'),
+        __metadata("design:type", String)
+    ], NgVirtualKeyboardDirective.prototype, "type", void 0);
     __decorate([
         core_1.HostListener('window:blur'),
         __metadata("design:type", Function),
@@ -595,7 +608,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     VirtualKeyboardComponent = VirtualKeyboardComponent_1 = __decorate([
         core_1.Component({
             selector: 'virtual-keyboard',
-            template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <mat-form-field>\n          <button class=\"close\" color=\"primary\" mat-button mat-mini-fab\n            (click)=\"close()\"\n          >\n            <mat-icon>check</mat-icon>\n          </button>\n    \n          <input type=\"text\"\n            matInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\"\n          />\n        </mat-form-field>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
+            template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <mat-form-field>\n          <button class=\"close\" color=\"primary\" mat-button mat-mini-fab\n            (click)=\"close()\"\n          >\n            <mat-icon>check</mat-icon>\n          </button>\n    \n          <input type=\"{{type}}\"\n            matInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\"\n          />\n        </mat-form-field>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
             styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
         }),
         __metadata("design:paramtypes", [material_1.MatDialogRef,
