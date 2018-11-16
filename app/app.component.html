@@ -85,6 +85,10 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
         <strong class="content" fxFlex="150px">
           With maxlength="5"
         </strong>
+
+        <strong class="content" fxFlex="150px">
+          Type Password
+        </strong>
       </div>
 
       <div fxLayout="column" *ngFor="let layout of layouts">
@@ -120,6 +124,15 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
             <input value="" placeholder="With maxlength=5" maxlength="5"
               matInput
               ng-virtual-keyboard
+              [ng-virtual-keyboard-layout]="layout.layout"
+            />
+          </mat-form-field>
+
+          <mat-form-field fxFlex="150px">
+            <input value="" placeholder="Type input Password" 
+              matInput
+              ng-virtual-keyboard
+              [ng-virtual-keyboard-type]="password"
               [ng-virtual-keyboard-layout]="layout.layout"
             />
           </mat-form-field>
