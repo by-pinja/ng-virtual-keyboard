@@ -22,6 +22,7 @@ export class NgVirtualKeyboardDirective {
 
   @Input('ng-virtual-keyboard-layout') layout: KeyboardLayout|string;
   @Input('ng-virtual-keyboard-placeholder') placeholder: string;
+  @Input('ng-virtual-keyboard-type') type: string;
 
   @HostListener('window:blur')
   onWindowBlur() {
@@ -69,6 +70,7 @@ export class NgVirtualKeyboardDirective {
       dialogRef.componentInstance.inputElement = this.element;
       dialogRef.componentInstance.layout = this.getLayout();
       dialogRef.componentInstance.placeholder = this.getPlaceHolder();
+      dialogRef.componentInstance.type = this.getType();
 
       dialogRef
         .afterClosed()
@@ -122,5 +124,14 @@ export class NgVirtualKeyboardDirective {
    */
   private getPlaceHolder(): string {
     return this.placeholder ? this.placeholder : this.element.nativeElement.placeholder;
+  }
+
+  /**
+   * Getter for used type for virtual keyboard input field.
+   * 
+   * @return {string}
+   */
+  private getType(): string {
+    return this.type ? this.type : this.element.nativeElement.type;
   }
 }
