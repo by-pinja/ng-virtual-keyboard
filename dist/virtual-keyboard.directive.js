@@ -44,6 +44,7 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
             dialogRef.componentInstance.inputElement = this.element;
             dialogRef.componentInstance.layout = this.getLayout();
             dialogRef.componentInstance.placeholder = this.getPlaceHolder();
+            dialogRef.componentInstance.type = this.getType();
             dialogRef
                 .afterClosed()
                 .subscribe(function () {
@@ -93,6 +94,14 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
     NgVirtualKeyboardDirective.prototype.getPlaceHolder = function () {
         return this.placeholder ? this.placeholder : this.element.nativeElement.placeholder;
     };
+    /**
+     * Getter for used type for virtual keyboard input field.
+     *
+     * @return {string}
+     */
+    NgVirtualKeyboardDirective.prototype.getType = function () {
+        return this.type ? this.type : this.element.nativeElement.type;
+    };
     NgVirtualKeyboardDirective.decorators = [
         { type: core_1.Directive, args: [{
                     selector: '[ng-virtual-keyboard]'
@@ -106,6 +115,7 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
     NgVirtualKeyboardDirective.propDecorators = {
         layout: [{ type: core_1.Input, args: ['ng-virtual-keyboard-layout',] }],
         placeholder: [{ type: core_1.Input, args: ['ng-virtual-keyboard-placeholder',] }],
+        type: [{ type: core_1.Input, args: ['ng-virtual-keyboard-type',] }],
         onWindowBlur: [{ type: core_1.HostListener, args: ['window:blur',] }],
         onWindowFocus: [{ type: core_1.HostListener, args: ['window:focus',] }],
         onFocus: [{ type: core_1.HostListener, args: ['focus',] }],

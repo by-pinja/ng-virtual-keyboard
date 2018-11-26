@@ -17,7 +17,7 @@ import { KeyPressInterface } from './key-press.interface';
             <mat-icon>check</mat-icon>
           </button>
     
-          <input type="text"
+          <input type="{{type}}"
             matInput
             #keyboardInput
             (click)="updateCaretPosition()"
@@ -72,6 +72,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   public inputElement: ElementRef;
   public layout: KeyboardLayout;
   public placeholder: string;
+  public type: string;
   public disabled: boolean;
   public maxLength: number|string;
 

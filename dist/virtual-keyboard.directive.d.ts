@@ -8,6 +8,7 @@ export declare class NgVirtualKeyboardDirective {
     private focus;
     layout: KeyboardLayout | string;
     placeholder: string;
+    type: string;
     onWindowBlur(): void;
     onWindowFocus(): void;
     onFocus(): void;
@@ -35,4 +36,10 @@ export declare class NgVirtualKeyboardDirective {
      * @returns {string}
      */
     private getPlaceHolder;
+    /**
+     * Getter for used type for virtual keyboard input field.
+     *
+     * @return {string}
+     */
+    private getType;
 }
