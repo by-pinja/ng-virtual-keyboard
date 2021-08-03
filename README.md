@@ -47,7 +47,15 @@ Simple usage example
 | `ng-virtual-keyboard-placeholder` | Override placeholder text, if input has not any - or you want to override input placeholder value |
 
 ## Demo
-https://protacon.github.io/ng-virtual-keyboard/
+https://by-pinja.github.io/ng-virtual-keyboard/
+
+## Local development
+
+To run virtual keyboard from local docker environment
+
+```bash
+docker-compose build ; docker-compose up
+```
 
 ## License
 [The MIT License (MIT)](LICENSE)

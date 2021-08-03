@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  test-image:
+    container_name: test_image
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./:/app

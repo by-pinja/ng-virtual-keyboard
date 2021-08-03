@@ -1,21 +1,19 @@
 FROM node:12-alpine3.14 as builder
+
+VOLUME ["/app"]
+
 WORKDIR /app
 
-RUN apk update \
-  && apk add --update alpine-sdk python2
-
 ENV PATH /app/node_modules/.bin:$PATH
-COPY . .
 
-RUN yarn install && ls node_modules
-RUN yarn build --configuration=production
+RUN apk update \
+  && apk add --update alpine-sdk python2 \
+  && ng config --global cli.packageManager yarn \
+  && apk del alpine-sdk \
+  && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
+  && npm cache clean --force \
+  && apk add chromium \
+  && yarn cache clean \
+  && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
 
-COPY . /app
-
-FROM nginx:mainline-alpine
-
-RUN apk add --no-cache jq
-
-COPY --from=builder /app/dist/* /usr/share/nginx/html/
-
-ENV CONFIG_JSON_PATH=/usr/share/nginx/html/assets/config/config.json
+CMD yarn install ; yarn run start
