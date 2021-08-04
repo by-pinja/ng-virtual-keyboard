@@ -22,7 +22,7 @@ podTemplate(label: pod.label,
                 """
             }
             stage('Publish') {
-                publishTagToNpm("dist")
+                publishTagToNpm("dist", "--tag beta")
             }
         }
     }
