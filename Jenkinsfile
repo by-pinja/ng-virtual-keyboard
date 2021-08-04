@@ -21,6 +21,9 @@ podTemplate(label: pod.label,
                     yarn lint
                 """
             }
+            stage('Publish') {
+                publishTagToNpm("dist")
+            }
         }
     }
 }
