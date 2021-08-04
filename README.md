@@ -8,6 +8,8 @@
 ## What is this?
 Virtual Keyboard for Angular applications
 
+[See CHANGELOG.md](CHANGELOG.md)
+
 ## Install
 ### Step 1: Install @protacon/ng-virtual-keyboard
 ```bash
