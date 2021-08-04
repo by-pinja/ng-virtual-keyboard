@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject} from "rxjs/internal/ReplaySubject";
+import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
 
 @Injectable()
 export class VirtualKeyboardService {
