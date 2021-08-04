@@ -14,5 +14,3 @@ RUN apk update \
   && apk add chromium \
   && yarn cache clean \
   && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
-
-CMD yarn install ; yarn run start

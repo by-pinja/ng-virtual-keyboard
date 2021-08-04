@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: [sh, -cx, "yarn install ; yarn run start"]
     ports:
       - '4200:4200'
     volumes:
