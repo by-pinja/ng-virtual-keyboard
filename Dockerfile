@@ -8,7 +8,6 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 RUN apk update \
   && apk add --update alpine-sdk python2 \
-  && ng config --global cli.packageManager yarn \
   && apk del alpine-sdk \
   && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
   && npm cache clean --force \
