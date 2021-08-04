@@ -51,11 +51,14 @@ https://by-pinja.github.io/ng-virtual-keyboard/
 
 ## Local development
 
-To run virtual keyboard from local docker environment
+For easier local development, Docker can be used for compiling and testing the
+keyboard. To run virtual keyboard from local docker environment, execute following:
 
 ```bash
 docker-compose build ; docker-compose up
 ```
+
+After this is ready, navigate to [http://localhost:4200/](http://localhost:4200/)
 
 ## License
 [The MIT License (MIT)](LICENSE)
