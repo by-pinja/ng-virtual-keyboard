@@ -1,12 +1,21 @@
 version: '3.7'
 
 services:
-  test-image:
-    container_name: test_image
+  example:
     build:
       context: .
       dockerfile: Dockerfile
+    command: [sh, -cx, "yarn run start"]
+    depends_on:
+      - dist
     ports:
       - '4200:4200'
+    volumes:
+      - ./:/app
+  dist:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: [sh, -cx, "yarn install ; yarn run build"]
     volumes:
       - ./:/app
