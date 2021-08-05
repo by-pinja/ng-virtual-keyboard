@@ -8,6 +8,8 @@
 ## What is this?
 Virtual Keyboard for Angular applications
 
+[See CHANGELOG.md](CHANGELOG.md)
+
 ## Install
 ### Step 1: Install @protacon/ng-virtual-keyboard
 ```bash
@@ -59,6 +61,17 @@ docker-compose build ; docker-compose up
 ```
 
 After this is ready, navigate to [http://localhost:4200/](http://localhost:4200/)
+
+To avoid installing node etc. locally, `execute.sh` can be used
+to exceute command with current version of supported container.
+
+Lint example:
+
+```bash
+bash execute.sh yarn lint
+```
+
+Basically this is just a shorthand for `docker run -it --rm -w /app -v ${PWD}/:/app node:12-alpine3.14 "$@"`
 
 ## License
 [The MIT License (MIT)](LICENSE)

@@ -1,4 +1,4 @@
-import { ReplaySubject } from "rxjs/internal/ReplaySubject";
+import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
 export declare class VirtualKeyboardService {
     shift$: ReplaySubject<boolean>;
     capsLock$: ReplaySubject<boolean>;

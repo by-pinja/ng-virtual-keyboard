@@ -2,20 +2,10 @@ version: '3.7'
 
 services:
   example:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: [sh, -cx, "yarn run start"]
-    depends_on:
-      - dist
+    image: node:12-alpine3.14
+    command: [sh, -cx, "yarn install ; yarn run start"]
     ports:
       - '4200:4200'
-    volumes:
-      - ./:/app
-  dist:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: [sh, -cx, "yarn install ; yarn run build"]
+    working_dir: /app
     volumes:
       - ./:/app
