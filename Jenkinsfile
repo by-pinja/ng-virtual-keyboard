@@ -22,7 +22,14 @@ podTemplate(label: pod.label,
                 """
             }
             stage('Publish') {
-                publishTagToNpm("./", "--tag beta")
+                if ("${env.TAG_NAME}".contains("-"))
+                {
+                    publishTagToNpm("./", "--tag beta")
+                }
+                else {
+                    publishTagToNpm()
+                }
+                
             }
         }
     }
