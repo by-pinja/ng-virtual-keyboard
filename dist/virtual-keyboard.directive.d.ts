@@ -1,4 +1,4 @@
-import { ElementRef } from '@angular/core';
+import { ElementRef, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { KeyboardLayout } from './layouts';
 export declare class NgVirtualKeyboardDirective {
@@ -9,6 +9,7 @@ export declare class NgVirtualKeyboardDirective {
     layout: KeyboardLayout | string;
     placeholder: string;
     type: string;
+    keyboardClose: EventEmitter<any>;
     onWindowBlur(): void;
     onWindowFocus(): void;
     onFocus(): void;
