@@ -74,7 +74,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   public placeholder: string;
   public type: string;
   public disabled: boolean;
-  public maxLength: number|string;
+  public maxLength: number | string;
 
   private caretPosition: number;
   private shift = false;
@@ -277,6 +277,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
           this.inputElement.nativeElement.value = currentValue.substring(0, currentValue.length - 1);
         }
 
+        this.dispatchEvents(event);
         // Set focus to keyboard input
         this.keyboardInput.nativeElement.focus();
         break;
@@ -312,7 +313,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     // Simulate all needed events on base element
     this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keydown', eventInit));
     this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keypress', eventInit));
-    this.inputElement.nativeElement.dispatchEvent(new Event('input', {bubbles : true}));
+    this.inputElement.nativeElement.dispatchEvent(new Event('input', { bubbles: true }));
     this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keyup', eventInit));
 
     // And set focus to input
