@@ -94,4 +94,8 @@ export class AppComponent {
       this.invalid = true;
     }
   }
+
+  onClose() {
+    console.log('Keyboard was closed');
+  }
 }

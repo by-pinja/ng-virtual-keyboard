@@ -56,9 +56,9 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
   ng-virtual-keyboard
   ng-virtual-keyboard-layout="alphanumeric"
   ng-virtual-keyboard-placeholder="Custom placeholder text"
+  (ng-virtual-keyboard-placeholder)="onOpen()"
 /&gt;</code></pre>
     </div>
-
 
     <div fxLayout="column wrap">
       <h2>Demos</h2>
@@ -100,6 +100,7 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
               matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
+              (ng-virtual-keyboard-close)="onClose()"
             />
           </mat-form-field>
 
@@ -108,6 +109,7 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
               matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
+              (ng-virtual-keyboard-close)="onClose()"
             />
           </mat-form-field>
 
@@ -117,6 +119,7 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
               [ng-virtual-keyboard-placeholder]="layout.placeholderCustom"
+              (ng-virtual-keyboard-close)="onClose()"
             />
           </mat-form-field>
 
@@ -125,6 +128,7 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
               matInput
               ng-virtual-keyboard
               [ng-virtual-keyboard-layout]="layout.layout"
+              (ng-virtual-keyboard-close)="onClose()"
             />
           </mat-form-field>
 
@@ -135,6 +139,7 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
               ng-virtual-keyboard
               ng-virtual-keyboard-type="password"
               [ng-virtual-keyboard-layout]="layout.layout"
+              (ng-virtual-keyboard-close)="onClose()"
             />
           </mat-form-field>
         </div>
@@ -148,6 +153,7 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
             matInput
             ng-virtual-keyboard
             [ng-virtual-keyboard-layout]="customLayout"
+            (ng-virtual-keyboard-close)="onClose()"
           />
         </mat-form-field>
       </div>
