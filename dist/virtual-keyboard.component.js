@@ -186,6 +186,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
                 else {
                     this.inputElement.nativeElement.value = currentValue.substring(0, currentValue.length - 1);
                 }
+                this.dispatchEvents(event);
                 // Set focus to keyboard input
                 this.keyboardInput.nativeElement.focus();
                 break;

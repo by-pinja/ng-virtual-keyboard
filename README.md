@@ -39,6 +39,7 @@ Simple usage example
   ng-virtual-keyboard
   ng-virtual-keyboard-layout="alphanumeric"
   ng-virtual-keyboard-placeholder="Custom placeholder text"
+  (ng-virtual-keyboard-close)="onClose()"
 />
 ```
 
@@ -47,6 +48,7 @@ Simple usage example
 | `ng-virtual-keyboard`             | Required to initialize Virtual Keyboard to specified input |
 | `ng-virtual-keyboard-layout`      | Used layout on keyboard, following keyboards are defaults that you can use `alphanumeric, alphanumericNordic, extended, extendedNordic, numeric, phone` |
 | `ng-virtual-keyboard-placeholder` | Override placeholder text, if input has not any - or you want to override input placeholder value |
+| `ng-virtual-keyboard-close`       | Listener for keyboard closing event |
 
 ## Demo
 https://by-pinja.github.io/ng-virtual-keyboard/
@@ -57,7 +59,7 @@ For easier local development, Docker can be used for compiling and testing the
 keyboard. To run virtual keyboard from local docker environment, execute following:
 
 ```bash
-docker-compose build ; docker-compose up
+docker-compose up
 ```
 
 After this is ready, navigate to [http://localhost:4200/](http://localhost:4200/)

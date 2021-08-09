@@ -25,6 +25,7 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
         this.dialog = dialog;
         this.opened = false;
         this.focus = true;
+        this.keyboardClose = new core_1.EventEmitter();
     }
     NgVirtualKeyboardDirective.prototype.onWindowBlur = function () {
         this.focus = false;
@@ -57,6 +58,7 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
             dialogRef
                 .afterClosed()
                 .subscribe(function () {
+                _this.keyboardClose.emit();
                 setTimeout(function () {
                     _this.opened = false;
                 }, 0);
@@ -123,6 +125,10 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
         core_1.Input('ng-virtual-keyboard-type'),
         __metadata("design:type", String)
     ], NgVirtualKeyboardDirective.prototype, "type", void 0);
+    __decorate([
+        core_1.Output('ng-virtual-keyboard-close'),
+        __metadata("design:type", core_1.EventEmitter)
+    ], NgVirtualKeyboardDirective.prototype, "keyboardClose", void 0);
     __decorate([
         core_1.HostListener('window:blur'),
         __metadata("design:type", Function),
