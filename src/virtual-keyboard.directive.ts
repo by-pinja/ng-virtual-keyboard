@@ -23,7 +23,7 @@ export class NgVirtualKeyboardDirective {
   @Input('ng-virtual-keyboard-layout') layout: KeyboardLayout | string;
   @Input('ng-virtual-keyboard-placeholder') placeholder: string;
   @Input('ng-virtual-keyboard-type') type: string;
-  @Output('ng-virtual-keyboard-close') keyboardClose: EventEmitter<void> = new EventEmitter();
+  @Output('ng-virtual-keyboard-close') keyboardClose: EventEmitter<void>;
 
   @HostListener('window:blur')
   onWindowBlur() {
@@ -56,7 +56,9 @@ export class NgVirtualKeyboardDirective {
   public constructor(
     private element: ElementRef,
     private dialog: MatDialog,
-  ) { }
+  ) { 
+    this.keyboardClose = new EventEmitter();
+  }
 
   /**
    * Method to open virtual keyboard
