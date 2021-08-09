@@ -9,7 +9,7 @@ export declare class NgVirtualKeyboardDirective {
     layout: KeyboardLayout | string;
     placeholder: string;
     type: string;
-    keyboardClose: EventEmitter<any>;
+    keyboardClose: EventEmitter<void>;
     onWindowBlur(): void;
     onWindowFocus(): void;
     onFocus(): void;

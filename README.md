@@ -39,7 +39,7 @@ Simple usage example
   ng-virtual-keyboard
   ng-virtual-keyboard-layout="alphanumeric"
   ng-virtual-keyboard-placeholder="Custom placeholder text"
-  (ng-virtual-keyboard-placeholder)="onClose()"
+  (ng-virtual-keyboard-close)="onClose()"
 />
 ```
 
