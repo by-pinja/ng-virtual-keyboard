@@ -268,7 +268,7 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
             dialogRef
                 .afterClosed()
                 .subscribe(function () {
-                _this.keyboardClose.emit(null);
+                _this.keyboardClose.emit();
                 setTimeout(function () {
                     _this.opened = false;
                 }, 0);
