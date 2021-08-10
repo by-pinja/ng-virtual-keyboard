@@ -6,13 +6,13 @@
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "start": "cross-env NODE_ENV=dev webpack-dev-server --progress --profile --port 4200 --host 0.0.0.0 --content-base app --config app/webpack.config --open",
+    "start": "cross-env NODE_ENV=dev webpack serve --progress --mode production --port 4200 --host 0.0.0.0 --content-base app --config app/webpack.config --open",
     "lint": "eslint 'src/**/*.ts' 'app/**/*.ts'",
     "clean": "rimraf dist",
     "build": "npm-run-all --serial clean build:ngc build:umd build:app build:gh-pages",
     "build:ngc": "ngc -p tsconfig.ngc.json",
-    "build:umd": "cross-env NODE_ENV=prod webpack --progress --profile",
-    "build:app": "cross-env NODE_ENV=prod webpack --progress --profile --config app/webpack.config",
+    "build:umd": "cross-env NODE_ENV=prod webpack --progress --mode production",
+    "build:app": "cross-env NODE_ENV=prod webpack --progress --mode production --config app/webpack.config",
     "build:gh-pages": "cp app/index.html docs && cp app/favicon.png docs && cp -r app/build docs"
   },
   "repository": {
@@ -51,7 +51,7 @@
     "angular2-template-loader": "^0.6.0",
     "core-js": "^2.6.9",
     "cross-env": "^5.2.1",
-    "css-loader": "^0.28.0",
+    "css-loader": "^1.0.0",
     "eslint": "^7.32.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "node-sass": "^4.12.0",
@@ -63,10 +63,11 @@
     "sass-loader": "^6.0.3",
     "strip-loader": "^0.1.2",
     "style-loader": "^0.16.1",
-    "ts-loader": "^2.0.3",
+    "ts-loader": "^4.4.2",
     "typescript": "~3.4.0",
-    "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.11.5",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.1",
     "zone.js": "^0.9.1"
   }
 }
