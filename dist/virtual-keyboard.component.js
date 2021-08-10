@@ -227,7 +227,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     };
     var VirtualKeyboardComponent_1;
     __decorate([
-        core_1.ViewChild('keyboardInput'),
+        core_1.ViewChild('keyboardInput', { static: true }),
         __metadata("design:type", core_1.ElementRef)
     ], VirtualKeyboardComponent.prototype, "keyboardInput", void 0);
     VirtualKeyboardComponent = VirtualKeyboardComponent_1 = __decorate([
