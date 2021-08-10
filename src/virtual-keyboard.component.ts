@@ -67,7 +67,7 @@ import { KeyPressInterface } from './key-press.interface';
 })
 
 export class VirtualKeyboardComponent implements OnInit, OnDestroy {
-  @ViewChild('keyboardInput', {static: true}) keyboardInput: ElementRef;
+  @ViewChild('keyboardInput', { static: true }) keyboardInput: ElementRef;
 
   public inputElement: ElementRef;
   public layout: KeyboardLayout;
